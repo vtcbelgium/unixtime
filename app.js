@@ -135,6 +135,17 @@ function init(){
  for(const id of ['dateInput','timeInput'])$(id).addEventListener('input',convertDate);
  $('dateZoneSelect').addEventListener('change',convertDate);
  $('langSelect').addEventListener('change',e=>location.assign(e.target.value));
+ const syncNavigation=()=>{
+  const active=location.hash==='#about'?'#about':'#converter';
+  document.querySelectorAll('.nav-links a').forEach(link=>{
+   const selected=link.getAttribute('href')===active;
+   link.classList.toggle('active',selected);
+   if(selected)link.setAttribute('aria-current','location');
+   else link.removeAttribute('aria-current');
+  });
+ };
+ window.addEventListener('hashchange',syncNavigation);
+ syncNavigation();
  document.addEventListener('click',e=>{
   const btn=e.target.closest('[data-copy]');
   if(btn){const target=$(btn.dataset.copy);if(target)copy(target.textContent,btn);}
