@@ -50,7 +50,10 @@ for code in languages:
     out+=['  <url>','    <loc>'+xml_escape(canonical(code))+'</loc>']
     out+=['    <xhtml:link rel="alternate" hreflang="'+alt+'" href="'+xml_escape(canonical(alt))+'"/>' for alt in languages]
     out+=['    <xhtml:link rel="alternate" hreflang="x-default" href="'+xml_escape(canonical('en'))+'"/>','  </url>']
-out+=['  <url><loc>'+BASE+'/about.html</loc></url>','  <url><loc>'+BASE+'/privacy.html</loc></url>','</urlset>']
+GUIDES=('unix-timestamp-milliseconds','unix-time-javascript','unix-time-python')
+for guide in GUIDES:
+    out+=['  <url><loc>'+BASE+'/'+guide+'/</loc><lastmod>2026-10-23</lastmod></url>']
+out+=['  <url><loc>'+BASE+'/about</loc></url>','  <url><loc>'+BASE+'/privacy</loc></url>','</urlset>']
 (ROOT/'sitemap.xml').write_text('\n'.join(out)+'\n',encoding='utf-8')
 (ROOT/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+BASE+'/sitemap.xml\n',encoding='utf-8')
 print('Generated',len(languages),'fully localized indexable pages and sitemap')
@@ -66,4 +69,6 @@ for lang in languages:
     target=output/lang
     target.mkdir()
     shutil.copy2(ROOT/lang/'index.html',target/'index.html')
+for guide in GUIDES:
+    shutil.copytree(ROOT/guide,output/guide)
 print('Built dist/ —',len(list(output.rglob('*'))),'files/directories (ready for commercial-permitted static hosting).')

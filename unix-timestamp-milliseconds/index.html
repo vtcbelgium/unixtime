@@ -1,0 +1,68 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unix Timestamp Milliseconds to Date: 10 vs 13 Digits | UnixTime</title>
+<meta name="description" content="Convert a 13-digit Unix millisecond timestamp to a date. See seconds vs milliseconds, 10/13/16/19-digit examples and safe JavaScript conversion.">
+<meta name="robots" content="index,follow,max-snippet:-1">
+<link rel="canonical" href="https://unixtime.othrys.be/unix-timestamp-milliseconds/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/styles.css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unix Timestamp Milliseconds to Date: 10 vs 13 Digits | UnixTime">
+<meta property="og:description" content="Convert a 13-digit Unix millisecond timestamp to a date. See seconds vs milliseconds, 10/13/16/19-digit examples and safe JavaScript conversion.">
+<meta property="og:url" content="https://unixtime.othrys.be/unix-timestamp-milliseconds/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://unixtime.othrys.be/unix-timestamp-milliseconds/","name":"Unix Timestamp Milliseconds to Date: 10 vs 13 Digits | UnixTime","description":"Convert a 13-digit Unix millisecond timestamp to a date. See seconds vs milliseconds, 10/13/16/19-digit examples and safe JavaScript conversion.","isPartOf":{"@type":"WebSite","name":"UnixTime","url":"https://unixtime.othrys.be/"},"inLanguage":"en","datePublished":"2026-10-23","dateModified":"2026-10-23"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><nav class="topbar container" aria-label="Main navigation">
+<a href="/" class="brand" aria-label="UnixTime home"><span class="brand-main"><strong>UNIX</strong>TIME</span><small class="brand-signature">an OTHRYS utility</small></a>
+<div class="nav-links"><a href="/">Converter</a><a href="/about">About UnixTime</a></div>
+<span aria-hidden="true"></span></nav></header>
+<main class="guide-main" id="main">
+<p class="guide-eyebrow"><a href="/">UnixTime</a> / Reference</p>
+<h1>Unix timestamp milliseconds to date</h1>
+<p class="guide-deck">Understand the difference between a 10-digit Unix timestamp and a 13-digit timestamp in milliseconds, with tested examples and practical code.</p>
+
+<h2>How to tell seconds and milliseconds apart</h2>
+<p>Unix time counts elapsed seconds from <strong>1970-01-01 00:00:00 UTC</strong>. Some systems represent the same instant in a finer unit. Current timestamps often have 10 digits in seconds, 13 in milliseconds, 16 in microseconds and 19 in nanoseconds. This is a useful clue, not a universal rule: dates before 2001, negative values and far-future dates can have different lengths.</p>
+<p>If a 13-digit value produces an impossibly distant date, you may have interpreted milliseconds as seconds. A reliable converter should let you choose the unit explicitly rather than relying solely on the number of digits.</p>
+<h2>One instant in four precisions</h2>
+<table><thead><tr><th>Unit</th><th>Example</th><th>Calculation</th></tr></thead><tbody>
+<tr><td>Seconds</td><td><code>1735689600</code></td><td>Base Unix timestamp</td></tr>
+<tr><td>Milliseconds</td><td><code>1735689600000</code></td><td>Seconds × 1,000</td></tr>
+<tr><td>Microseconds</td><td><code>1735689600000000</code></td><td>Seconds × 1,000,000</td></tr>
+<tr><td>Nanoseconds</td><td><code>1735689600000000000</code></td><td>Seconds × 1,000,000,000</td></tr>
+</tbody></table>
+<p>All four numbers describe <strong>2025-01-01 00:00:00 UTC</strong>. The zeros show the difference in unit; they do not mean the clock has become more accurate. An underlying reading may only be precise to seconds even if stored in a nanosecond-sized field.</p>
+<div class="guide-action"><a href="/?ts=1735689600000&amp;unit=ms">Convert this millisecond timestamp now →</a></div>
+<h2>Converting 13-digit Unix milliseconds in JavaScript</h2>
+<p>JavaScript's <code>Date</code> constructor expects <strong>milliseconds</strong>. The browser's <code>Date.now()</code> also returns milliseconds. To get Unix seconds, divide by 1,000 and use <code>Math.floor</code>. For dates before 1970, <code>Math.floor</code> and <code>Math.trunc</code> produce different results for fractional negatives.</p>
+<pre><code>const milliseconds = 1735689600000;
+new Date(milliseconds).toISOString(); // &quot;2025-01-01T00:00:00.000Z&quot;
+const seconds = Math.floor(milliseconds / 1000); // 1735689600</code></pre>
+<h2>What about microseconds and nanoseconds?</h2>
+<p>Multiplying modern Unix seconds by a billion gives a number larger than JavaScript's maximum safe integer. Use <code>BigInt</code> for exact integer arithmetic, especially when milliseconds are not enough. Standard JavaScript <code>Date</code> still represents human-readable times at millisecond precision, so the remaining digits must be kept separately if your application needs them.</p>
+<pre><code>const epochNanoseconds = 1735689600000000001n;
+const epochMilliseconds = epochNanoseconds / 1000000n;
+const readable = new Date(Number(epochMilliseconds)).toISOString();
+// &quot;2025-01-01T00:00:00.000Z&quot;
+// The extra 1 nanosecond remains in epochNanoseconds.</code></pre>
+<h2>Are timestamps affected by daylight saving time?</h2>
+<p>No. An epoch timestamp identifies an instant regardless of the viewer's time zone. A displayed date can change when you select Brussels, London or New York. Daylight-saving changes affect how local clock times map to instants, not the epoch timestamp for an already known instant.</p>
+<p>Unix time excludes leap seconds and is not the same thing as a local wall clock. For logs, database exports and API responses, record the unit and whether the human-readable date was UTC.</p>
+
+<p class="guide-source">Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now" rel="noopener" target="_blank">MDN Date.now() reference</a>.</p>
+<nav class="guide-related" aria-label="Related Unix time guides"><h2>Related Unix time tools and guides</h2>
+<ul>
+<li><a href="/">Current Unix time converter</a></li>
+<li><a href="/unix-timestamp-milliseconds/">Milliseconds and timestamp digits</a></li>
+<li><a href="/unix-time-javascript/">Unix time in JavaScript</a></li>
+<li><a href="/unix-time-python/">Unix time in Python</a></li>
+</ul></nav>
+</main>
+<footer class="guide-footer"><a href="/">UnixTime converter</a><a href="/about">About</a><a href="/privacy">Privacy</a><a href="https://othrys.be/" rel="noopener" target="_blank">OTHRYS</a></footer>
+</body>
+</html>

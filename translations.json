@@ -1,6 +1,6 @@
 {
   "en": {
-    "SEO_TITLE": "Unix Time Converter — Current Unix Timestamp & Epoch to Date | UnixTime",
+    "SEO_TITLE": "Unix Time Converter — Current Unix Timestamp | UnixTime",
     "SEO_DESC": "Check the current Unix time. Instantly convert Unix timestamps to dates and dates to epoch seconds, milliseconds, microseconds or nanoseconds. UTC and time zones.",
     "SKIP": "Skip to converter",
     "TAGLINE": "Fast · private · accurate",
@@ -76,7 +76,8 @@
     "USEFUL_REFERENCES": "USEFUL REFERENCES",
     "FOOTER_TAGLINE": "A simple and accurate Unix timestamp converter.",
     "COPY_TIME": "Copy time",
-    "ALL_PROGRAMMING": "All programming examples"
+    "ALL_PROGRAMMING": "All programming examples",
+    "MILLISECONDS_GUIDE": "Unix milliseconds explained"
   },
   "nl": {
     "SEO_TITLE": "Unix-tijd omrekenen — Huidige Unix timestamp & epoch naar datum | UnixTime",
@@ -155,7 +156,8 @@
     "USEFUL_REFERENCES": "HANDIGE REFERENTIES",
     "FOOTER_TAGLINE": "Een eenvoudige en nauwkeurige Unix timestamp-omrekenaar.",
     "COPY_TIME": "Tijd kopiëren",
-    "ALL_PROGRAMMING": "Alle programmeervoorbeelden"
+    "ALL_PROGRAMMING": "Alle programmeervoorbeelden",
+    "MILLISECONDS_GUIDE": "Unix-milliseconden uitgelegd"
   },
   "fr": {
     "SEO_TITLE": "Convertisseur Unix — Heure Unix actuelle et timestamp vers date | UnixTime",
@@ -234,7 +236,8 @@
     "USEFUL_REFERENCES": "RÉFÉRENCES UTILES",
     "FOOTER_TAGLINE": "Un convertisseur Unix simple et précis.",
     "COPY_TIME": "Copier l'heure",
-    "ALL_PROGRAMMING": "Tous les exemples de programmation"
+    "ALL_PROGRAMMING": "Tous les exemples de programmation",
+    "MILLISECONDS_GUIDE": "Comprendre les millisecondes Unix"
   },
   "de": {
     "SEO_TITLE": "Unix-Zeit umrechnen — Aktueller Unix-Timestamp und Datum | UnixTime",
@@ -313,7 +316,8 @@
     "USEFUL_REFERENCES": "NÜTZLICHE REFERENZEN",
     "FOOTER_TAGLINE": "Ein einfacher und genauer Unix-Timestamp-Konverter.",
     "COPY_TIME": "Zeit kopieren",
-    "ALL_PROGRAMMING": "Alle Programmierbeispiele"
+    "ALL_PROGRAMMING": "Alle Programmierbeispiele",
+    "MILLISECONDS_GUIDE": "Unix-Millisekunden erklärt"
   },
   "es": {
     "SEO_TITLE": "Convertidor de tiempo Unix — Epoch a fecha y hora actual | UnixTime",
@@ -392,7 +396,8 @@
     "USEFUL_REFERENCES": "REFERENCIAS ÚTILES",
     "FOOTER_TAGLINE": "Un convertidor Unix sencillo y preciso.",
     "COPY_TIME": "Copiar hora",
-    "ALL_PROGRAMMING": "Todos los ejemplos de programación"
+    "ALL_PROGRAMMING": "Todos los ejemplos de programación",
+    "MILLISECONDS_GUIDE": "Milisegundos Unix explicados"
   },
   "pt": {
     "SEO_TITLE": "Conversor de tempo Unix — Timestamp atual e epoch para data | UnixTime",
@@ -471,6 +476,7 @@
     "USEFUL_REFERENCES": "REFERÊNCIAS ÚTEIS",
     "FOOTER_TAGLINE": "Um conversor de Unix timestamp simples e preciso.",
     "COPY_TIME": "Copiar hora",
-    "ALL_PROGRAMMING": "Todos os exemplos de programação"
+    "ALL_PROGRAMMING": "Todos os exemplos de programação",
+    "MILLISECONDS_GUIDE": "Milissegundos Unix explicados"
   }
 }

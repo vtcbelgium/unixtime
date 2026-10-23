@@ -60,6 +60,9 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://unixtime.othrys.be/pt/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://unixtime.othrys.be/"/>
   </url>
-  <url><loc>https://unixtime.othrys.be/about.html</loc></url>
-  <url><loc>https://unixtime.othrys.be/privacy.html</loc></url>
+  <url><loc>https://unixtime.othrys.be/unix-timestamp-milliseconds/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://unixtime.othrys.be/unix-time-javascript/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://unixtime.othrys.be/unix-time-python/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://unixtime.othrys.be/about</loc></url>
+  <url><loc>https://unixtime.othrys.be/privacy</loc></url>
 </urlset>

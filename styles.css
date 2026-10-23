@@ -86,3 +86,30 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,su
 @media(max-width:680px){.container{width:calc(100% - 30px)}.topbar{height:60px;grid-template-columns:1fr auto}.nav-links{display:none}.brand{margin-top:6px}.lang-menu{margin-top:7px}.hero{padding:31px 0 28px}.kicker{font-size:11px}.hero-time{gap:9px;flex-wrap:wrap}.timestamp{font-size:clamp(29px,8.5vw,55px);letter-spacing:-.06em}.live-dot{width:9px;height:9px}.copy-time{padding:8px;font-size:0;gap:0}.copy-time svg{width:17px;height:17px}.hero-readable{font-size:14px;margin-top:8px}.hero-caption{font-size:11px}.converter{grid-template-columns:1fr}.convert-col{padding:24px 0 25px}.convert-col+.convert-col{padding:24px 0 25px;border-left:0;border-top:1px solid var(--line)}.col-head h2{font-size:26px}.col-head{margin-bottom:15px}.unit-choice{font-size:11px;padding:8px 3px}.output-label{margin-top:18px}.date-time-inputs{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}.below{grid-template-columns:1fr;gap:22px;padding:25px 0}.explain{padding:0}.references{padding:18px 0 0;border-left:0;border-top:1px solid var(--line)}.explain h2{font-size:25px}.footer{flex-wrap:wrap;padding:19px 0;gap:9px}.footer-links{margin-left:auto}.footer-left{width:100%}}
 @media(max-width:360px){.timestamp{font-size:28px}.date-time-inputs{gap:6px}.date-time-inputs input{font-size:13px;padding:8px}.converted-value{font-size:15px}.unit-choice{font-size:10px}.reference-links{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Reference guide links share the exact visual rhythm of programming expanders. */
+.reference-links a.reference-guide{color:#0e59e9;font-size:12px;padding:3px 0;text-decoration:none;white-space:normal;line-height:1.5}
+.reference-links a.reference-guide::before{content:"↗";font-size:14px;font-weight:670;margin-right:9px}
+.reference-links a.reference-guide:hover{text-decoration:underline}
+/* Original research/reference pages: a separate reading layout, no homepage changes. */
+.guide-main{max-width:880px;margin:0 auto;padding:35px 24px 54px}
+.guide-eyebrow{text-transform:uppercase;letter-spacing:.11em;color:#4c5b76;font:12px var(--mono);margin:0 0 9px}
+.guide-main h1{font-size:clamp(30px,4vw,43px);line-height:1.18;letter-spacing:-.045em;margin:0 0 10px}
+.guide-deck{color:var(--muted);font-size:16px;line-height:1.65;margin:0 0 26px}
+.guide-main h2{font-size:24px;letter-spacing:-.025em;margin:26px 0 10px}
+.guide-main h3{font-size:18px;margin:21px 0 8px}
+.guide-main p,.guide-main li{color:#3e4a5f;font-size:15px;line-height:1.75}
+.guide-main ul,.guide-main ol{padding-left:23px}
+.guide-main pre{background:#162139;color:#f5f9ff;padding:17px 20px;line-height:1.6;border-radius:7px;font-size:13px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere}
+.guide-main code{font-family:var(--mono);font-size:.9em}
+.guide-main :not(pre)>code{background:#eaf0fa;border-radius:3px;padding:2px 4px;color:#122e60}
+.guide-main table{width:100%;border-collapse:collapse;font-size:14px}
+.guide-main td,.guide-main th{border-bottom:1px solid var(--line);padding:12px 10px;text-align:left;overflow-wrap:anywhere}
+.guide-main th{background:#f4f7fb}
+.guide-main .guide-action{background:#eff5ff;border:1px solid #cedfff;border-radius:7px;padding:16px 20px;margin:24px 0}
+.guide-main .guide-action a{font-weight:720}
+.guide-related{border-top:1px solid var(--line);padding-top:20px;margin-top:35px}
+.guide-related ul{display:flex;gap:9px 22px;flex-wrap:wrap;list-style:none;padding:0}
+.guide-related a{font-weight:620}
+.guide-footer{max-width:880px;margin:0 auto;padding:22px 24px 35px;border-top:1px solid var(--line);display:flex;gap:20px;flex-wrap:wrap;font-size:13px}
+@media(max-width:680px){.guide-main{padding:25px 17px 35px}.guide-footer{padding:20px 17px}}

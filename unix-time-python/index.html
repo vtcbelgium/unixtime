@@ -1,0 +1,76 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unix Time in Python: Timestamp to UTC Datetime | UnixTime</title>
+<meta name="description" content="Get the current Unix timestamp in Python, convert seconds and milliseconds to UTC datetime, and avoid naive timezone errors with tested examples.">
+<meta name="robots" content="index,follow,max-snippet:-1">
+<link rel="canonical" href="https://unixtime.othrys.be/unix-time-python/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/styles.css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unix Time in Python: Timestamp to UTC Datetime | UnixTime">
+<meta property="og:description" content="Get the current Unix timestamp in Python, convert seconds and milliseconds to UTC datetime, and avoid naive timezone errors with tested examples.">
+<meta property="og:url" content="https://unixtime.othrys.be/unix-time-python/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://unixtime.othrys.be/unix-time-python/","name":"Unix Time in Python: Timestamp to UTC Datetime | UnixTime","description":"Get the current Unix timestamp in Python, convert seconds and milliseconds to UTC datetime, and avoid naive timezone errors with tested examples.","isPartOf":{"@type":"WebSite","name":"UnixTime","url":"https://unixtime.othrys.be/"},"inLanguage":"en","datePublished":"2026-10-23","dateModified":"2026-10-23"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><nav class="topbar container" aria-label="Main navigation">
+<a href="/" class="brand" aria-label="UnixTime home"><span class="brand-main"><strong>UNIX</strong>TIME</span><small class="brand-signature">an OTHRYS utility</small></a>
+<div class="nav-links"><a href="/">Converter</a><a href="/about">About UnixTime</a></div>
+<span aria-hidden="true"></span></nav></header>
+<main class="guide-main" id="main">
+<p class="guide-eyebrow"><a href="/">UnixTime</a> / Reference</p>
+<h1>Unix time in Python</h1>
+<p class="guide-deck">Convert Unix timestamps to timezone-aware Python datetimes and back, including 13-digit millisecond timestamps.</p>
+
+<h2>Get the current Unix timestamp in Python</h2>
+<p>Use <code>datetime.now(timezone.utc)</code> to create a timezone-aware UTC datetime. Calling <code>.timestamp()</code> returns Unix seconds as a float. Convert it to an integer if your application needs whole seconds.</p>
+<pre><code>from datetime import datetime, timezone
+
+now_utc = datetime.now(timezone.utc)
+unix_seconds = int(now_utc.timestamp())
+print(unix_seconds)  # Current Unix time in whole seconds</code></pre>
+<h2>Convert Unix seconds to a UTC datetime</h2>
+<p><code>datetime.fromtimestamp()</code> accepts seconds, not milliseconds. Pass <code>tz=timezone.utc</code> to get a timezone-aware object. Without that argument, Python produces a naive local datetime, which can cause mistakes when comparing or serializing timestamps.</p>
+<pre><code>from datetime import datetime, timezone
+
+seconds = 1735689600
+date = datetime.fromtimestamp(seconds, tz=timezone.utc)
+print(date.isoformat())  # &quot;2025-01-01T00:00:00+00:00&quot; </code></pre>
+<h2>Convert a 13-digit millisecond timestamp</h2>
+<p>Many JavaScript APIs and database exports use milliseconds. Divide by <code>1000</code> before passing the value to <code>fromtimestamp</code>. The resulting object is still interpreted according to the time zone you choose.</p>
+<pre><code>from datetime import datetime, timezone
+
+milliseconds = 1735689600000
+date = datetime.fromtimestamp(milliseconds / 1000, tz=timezone.utc)
+print(date.strftime(&quot;%Y-%m-%d %H:%M:%S %Z&quot;))
+# 2025-01-01 00:00:00 UTC</code></pre>
+<h2>Convert a UTC datetime back to a timestamp</h2>
+<p>A naive <code>datetime</code> has no offset information. Explicitly create a timezone-aware UTC datetime for reproducible results.</p>
+<pre><code>from datetime import datetime, timezone
+
+date = datetime(2025, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
+seconds = int(date.timestamp())
+print(seconds)  # 1735689600</code></pre>
+<h2>Potential pitfalls</h2>
+<ul><li><strong>Seconds versus milliseconds:</strong> A 13-digit timestamp is often milliseconds; Python expects seconds.</li>
+<li><strong>Local versus UTC:</strong> Use aware datetimes and convert with <code>.astimezone()</code> when displaying regional times.</li>
+<li><strong>Fractional seconds:</strong> Floats can lose precision at the microsecond and especially nanosecond level. Use integer division or <code>Decimal</code> when exact fractional timestamps matter.</li>
+<li><strong>Negative timestamps:</strong> Dates before 1970 have negative Unix timestamps. Some platforms have different date ranges; validate extreme values.</li></ul>
+<p>For a quick interactive check, use the <a href="/">UnixTime converter</a>, which also handles microsecond and nanosecond integers.</p>
+
+<p class="guide-source">Reference: <a href="https://docs.python.org/3/library/datetime.html" rel="noopener" target="_blank">Python datetime documentation</a>.</p>
+<nav class="guide-related" aria-label="Related Unix time guides"><h2>Related Unix time tools and guides</h2>
+<ul>
+<li><a href="/">Current Unix time converter</a></li>
+<li><a href="/unix-timestamp-milliseconds/">Milliseconds and timestamp digits</a></li>
+<li><a href="/unix-time-javascript/">Unix time in JavaScript</a></li>
+<li><a href="/unix-time-python/">Unix time in Python</a></li>
+</ul></nav>
+</main>
+<footer class="guide-footer"><a href="/">UnixTime converter</a><a href="/about">About</a><a href="/privacy">Privacy</a><a href="https://othrys.be/" rel="noopener" target="_blank">OTHRYS</a></footer>
+</body>
+</html>

@@ -1,0 +1,70 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unix Time in JavaScript: Date.now, Seconds &amp; ISO | UnixTime</title>
+<meta name="description" content="Get Unix time in JavaScript using Date.now(), convert seconds to dates, avoid millisecond mistakes and display UTC and time zones correctly.">
+<meta name="robots" content="index,follow,max-snippet:-1">
+<link rel="canonical" href="https://unixtime.othrys.be/unix-time-javascript/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/styles.css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unix Time in JavaScript: Date.now, Seconds &amp; ISO | UnixTime">
+<meta property="og:description" content="Get Unix time in JavaScript using Date.now(), convert seconds to dates, avoid millisecond mistakes and display UTC and time zones correctly.">
+<meta property="og:url" content="https://unixtime.othrys.be/unix-time-javascript/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://unixtime.othrys.be/unix-time-javascript/","name":"Unix Time in JavaScript: Date.now, Seconds & ISO | UnixTime","description":"Get Unix time in JavaScript using Date.now(), convert seconds to dates, avoid millisecond mistakes and display UTC and time zones correctly.","isPartOf":{"@type":"WebSite","name":"UnixTime","url":"https://unixtime.othrys.be/"},"inLanguage":"en","datePublished":"2026-10-23","dateModified":"2026-10-23"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><nav class="topbar container" aria-label="Main navigation">
+<a href="/" class="brand" aria-label="UnixTime home"><span class="brand-main"><strong>UNIX</strong>TIME</span><small class="brand-signature">an OTHRYS utility</small></a>
+<div class="nav-links"><a href="/">Converter</a><a href="/about">About UnixTime</a></div>
+<span aria-hidden="true"></span></nav></header>
+<main class="guide-main" id="main">
+<p class="guide-eyebrow"><a href="/">UnixTime</a> / Reference</p>
+<h1>Unix time in JavaScript</h1>
+<p class="guide-deck">Use Date.now(), convert timestamps to ISO dates and avoid seconds-versus-milliseconds errors in JavaScript.</p>
+
+<h2>Get the current Unix timestamp in JavaScript</h2>
+<p><code>Date.now()</code> returns the number of <strong>milliseconds</strong> since the Unix epoch. Many APIs ask for Unix seconds instead. Use <code>Math.floor(Date.now() / 1000)</code> for that representation.</p>
+<pre><code>const nowMilliseconds = Date.now();
+const nowSeconds = Math.floor(Date.now() / 1000);
+console.log(nowSeconds); // Current Unix timestamp, in seconds</code></pre>
+<h2>Convert Unix seconds into an ISO 8601 date</h2>
+<p>The JavaScript <code>Date</code> constructor expects milliseconds. Multiplying an epoch value in seconds by 1,000 is essential. <code>toISOString()</code> returns the UTC timestamp, marked with a trailing <code>Z</code>.</p>
+<pre><code>const unixSeconds = 1735689600;
+const utcDate = new Date(unixSeconds * 1000);
+console.log(utcDate.toISOString()); // &quot;2025-01-01T00:00:00.000Z&quot; </code></pre>
+<h2>Convert a date to Unix seconds</h2>
+<p>A string ending in <code>Z</code> is interpreted as UTC. An ISO date-time string without a time-zone offset may be interpreted as the viewer's local time. Explicitly include the offset if you want consistent results across browsers and servers.</p>
+<pre><code>const utc = new Date(&quot;2025-01-01T00:00:00Z&quot;);
+const seconds = Math.floor(utc.getTime() / 1000);
+console.log(seconds); // 1735689600</code></pre>
+<h2>Display the same instant in another time zone</h2>
+<p>Formatting a timestamp for a locale does not change the underlying Unix instant. Use <code>Intl.DateTimeFormat</code> with an IANA time zone. This is particularly important around daylight-saving transitions, when local times can be repeated or skipped.</p>
+<pre><code>const instant = new Date(1735689600 * 1000);
+const formatter = new Intl.DateTimeFormat(&quot;en-GB&quot;, {
+  dateStyle: &quot;medium&quot;, timeStyle: &quot;medium&quot;,
+  timeZone: &quot;Europe/Brussels&quot;
+});
+console.log(formatter.format(instant));</code></pre>
+<h2>Common mistakes and precision limits</h2>
+<ul><li><strong>Ten digits versus thirteen:</strong> Seconds passed to <code>new Date()</code> produce a date near 1970; convert to milliseconds first.</li>
+<li><strong>Negative timestamps:</strong> Dates before 1970 are valid. Use floor division when converting negative millisecond values to whole Unix seconds.</li>
+<li><strong>Nanoseconds:</strong> Use <code>BigInt</code> to avoid precision loss; <code>Date</code> can only display milliseconds.</li>
+<li><strong>The year 2038:</strong> JavaScript's <code>Date</code> is not limited by a signed 32-bit Unix timestamp. An old database column or external system still could be.</li></ul>
+<p>Our <a href="/">UnixTime converter</a> performs the conversion locally in the browser, and you can choose seconds, milliseconds, microseconds or nanoseconds explicitly.</p>
+
+<p class="guide-source">Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" rel="noopener" target="_blank">MDN JavaScript Date documentation</a>.</p>
+<nav class="guide-related" aria-label="Related Unix time guides"><h2>Related Unix time tools and guides</h2>
+<ul>
+<li><a href="/">Current Unix time converter</a></li>
+<li><a href="/unix-timestamp-milliseconds/">Milliseconds and timestamp digits</a></li>
+<li><a href="/unix-time-javascript/">Unix time in JavaScript</a></li>
+<li><a href="/unix-time-python/">Unix time in Python</a></li>
+</ul></nav>
+</main>
+<footer class="guide-footer"><a href="/">UnixTime converter</a><a href="/about">About</a><a href="/privacy">Privacy</a><a href="https://othrys.be/" rel="noopener" target="_blank">OTHRYS</a></footer>
+</body>
+</html>
