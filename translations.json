@@ -8,7 +8,7 @@
     "EYEBROW": "LIVE UNIX TIME & EPOCH TOOLS",
     "HEADING": "Unix time converter",
     "SUBTITLE": "See the current Unix timestamp and convert between epoch time and readable dates. Seconds, milliseconds, microseconds and nanoseconds — instantly, in your browser.",
-    "LIVE_TITLE": "Current Unix time",
+    "LIVE_TITLE": "The current Unix time",
     "LIVE_BADGE": "Live",
     "UNIX_SEC": "Seconds since 1 January 1970 (UTC)",
     "COPY": "Copy",
@@ -68,7 +68,15 @@
     "NAV_CONVERTER": "Converter",
     "NAV_ABOUT": "About Unix time",
     "DATE_SHORT": "Date",
-    "UNIX_IN": "Unix time in"
+    "UNIX_IN": "Unix time in",
+    "LEFT_DESC": "Convert a Unix timestamp to a human-readable date and time.",
+    "RIGHT_DESC": "Convert a human-readable date and time to a Unix timestamp.",
+    "TIME_LABEL": "Time",
+    "UNIX_OUTPUT_LABEL": "Unix timestamp (seconds)",
+    "USEFUL_REFERENCES": "USEFUL REFERENCES",
+    "FOOTER_TAGLINE": "A simple and accurate Unix timestamp converter.",
+    "COPY_TIME": "Copy time",
+    "ALL_PROGRAMMING": "All programming examples"
   },
   "nl": {
     "SEO_TITLE": "Unix-tijd omrekenen — Huidige Unix timestamp & epoch naar datum | UnixTime",
@@ -139,7 +147,15 @@
     "NAV_CONVERTER": "Omrekenen",
     "NAV_ABOUT": "Over Unix-tijd",
     "DATE_SHORT": "Datum",
-    "UNIX_IN": "Unix-tijd in"
+    "UNIX_IN": "Unix-tijd in",
+    "LEFT_DESC": "Reken een Unix timestamp om naar een leesbare datum en tijd.",
+    "RIGHT_DESC": "Reken een leesbare datum en tijd om naar een Unix timestamp.",
+    "TIME_LABEL": "Tijd",
+    "UNIX_OUTPUT_LABEL": "Unix timestamp (seconden)",
+    "USEFUL_REFERENCES": "HANDIGE REFERENTIES",
+    "FOOTER_TAGLINE": "Een eenvoudige en nauwkeurige Unix timestamp-omrekenaar.",
+    "COPY_TIME": "Tijd kopiëren",
+    "ALL_PROGRAMMING": "Alle programmeervoorbeelden"
   },
   "fr": {
     "SEO_TITLE": "Convertisseur Unix — Heure Unix actuelle et timestamp vers date | UnixTime",
@@ -210,7 +226,15 @@
     "NAV_CONVERTER": "Convertisseur",
     "NAV_ABOUT": "À propos du temps Unix",
     "DATE_SHORT": "Date",
-    "UNIX_IN": "Temps Unix en"
+    "UNIX_IN": "Temps Unix en",
+    "LEFT_DESC": "Convertissez un timestamp Unix en date et heure lisibles.",
+    "RIGHT_DESC": "Convertissez une date et une heure en timestamp Unix.",
+    "TIME_LABEL": "Heure",
+    "UNIX_OUTPUT_LABEL": "Timestamp Unix (secondes)",
+    "USEFUL_REFERENCES": "RÉFÉRENCES UTILES",
+    "FOOTER_TAGLINE": "Un convertisseur Unix simple et précis.",
+    "COPY_TIME": "Copier l'heure",
+    "ALL_PROGRAMMING": "Tous les exemples de programmation"
   },
   "de": {
     "SEO_TITLE": "Unix-Zeit umrechnen — Aktueller Unix-Timestamp und Datum | UnixTime",
@@ -281,7 +305,15 @@
     "NAV_CONVERTER": "Umrechner",
     "NAV_ABOUT": "Über Unix-Zeit",
     "DATE_SHORT": "Datum",
-    "UNIX_IN": "Unix-Zeit in"
+    "UNIX_IN": "Unix-Zeit in",
+    "LEFT_DESC": "Wandeln Sie einen Unix-Timestamp in ein lesbares Datum und eine Uhrzeit um.",
+    "RIGHT_DESC": "Wandeln Sie Datum und Uhrzeit in einen Unix-Timestamp um.",
+    "TIME_LABEL": "Uhrzeit",
+    "UNIX_OUTPUT_LABEL": "Unix-Timestamp (Sekunden)",
+    "USEFUL_REFERENCES": "NÜTZLICHE REFERENZEN",
+    "FOOTER_TAGLINE": "Ein einfacher und genauer Unix-Timestamp-Konverter.",
+    "COPY_TIME": "Zeit kopieren",
+    "ALL_PROGRAMMING": "Alle Programmierbeispiele"
   },
   "es": {
     "SEO_TITLE": "Convertidor de tiempo Unix — Epoch a fecha y hora actual | UnixTime",
@@ -352,7 +384,15 @@
     "NAV_CONVERTER": "Convertidor",
     "NAV_ABOUT": "Sobre el tiempo Unix",
     "DATE_SHORT": "Fecha",
-    "UNIX_IN": "Tiempo Unix en"
+    "UNIX_IN": "Tiempo Unix en",
+    "LEFT_DESC": "Convierte un timestamp Unix en una fecha y hora legibles.",
+    "RIGHT_DESC": "Convierte una fecha y hora en un timestamp Unix.",
+    "TIME_LABEL": "Hora",
+    "UNIX_OUTPUT_LABEL": "Timestamp Unix (segundos)",
+    "USEFUL_REFERENCES": "REFERENCIAS ÚTILES",
+    "FOOTER_TAGLINE": "Un convertidor Unix sencillo y preciso.",
+    "COPY_TIME": "Copiar hora",
+    "ALL_PROGRAMMING": "Todos los ejemplos de programación"
   },
   "pt": {
     "SEO_TITLE": "Conversor de tempo Unix — Timestamp atual e epoch para data | UnixTime",
@@ -423,6 +463,14 @@
     "NAV_CONVERTER": "Conversor",
     "NAV_ABOUT": "Sobre o tempo Unix",
     "DATE_SHORT": "Data",
-    "UNIX_IN": "Tempo Unix em"
+    "UNIX_IN": "Tempo Unix em",
+    "LEFT_DESC": "Converta um timestamp Unix numa data e hora legíveis.",
+    "RIGHT_DESC": "Converta uma data e hora num timestamp Unix.",
+    "TIME_LABEL": "Hora",
+    "UNIX_OUTPUT_LABEL": "Timestamp Unix (segundos)",
+    "USEFUL_REFERENCES": "REFERÊNCIAS ÚTEIS",
+    "FOOTER_TAGLINE": "Um conversor de Unix timestamp simples e preciso.",
+    "COPY_TIME": "Copiar hora",
+    "ALL_PROGRAMMING": "Todos os exemplos de programação"
   }
 }

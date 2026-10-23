@@ -1,8 +1,8 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="nl" dir="ltr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Unix-tijd omrekenen — Huidige Unix timestamp &amp; epoch naar datum | UnixTime</title>
 <meta name="description" content="Bekijk de huidige Unix-tijd. Zet Unix timestamps om naar datums en terug, in seconden, milliseconden, microseconden of nanoseconden. UTC en tijdzones.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
@@ -31,9 +31,13 @@
 <a class="skip" href="#main">Ga naar de omrekenaar</a>
 <header class="site-header">
   <nav class="topbar container" aria-label="Main navigation">
-    <a class="brand" href="/" aria-label="UnixTime home"><strong>UNIX</strong>TIME</a>
-    <div class="nav-links"><a class="active" href="#converter">Omrekenen</a><a href="#about">Over Unix-tijd</a></div>
-    <label class="locale-label" for="langSelect">Taal
+    <a href="/" class="brand" aria-label="UnixTime home"><strong>UNIX</strong>TIME</a>
+    <div class="nav-links">
+      <a class="active" href="#converter">Omrekenen</a>
+      <a href="#about">Over Unix-tijd</a>
+    </div>
+    <label class="locale-label" for="langSelect">
+      <span class="sr-only">Taal</span>
       <select id="langSelect" class="lang-menu" aria-label="Taal"><option value="https://unixtime.othrys.be/">English</option>
 <option value="https://unixtime.othrys.be/nl/" selected>Nederlands</option>
 <option value="https://unixtime.othrys.be/fr/">Français</option>
@@ -43,166 +47,124 @@
     </label>
   </nav>
 </header>
-<main id="main" class="container">
+<main class="container" id="main">
   <section class="hero" aria-labelledby="clock-heading">
     <p class="kicker">Huidige Unix-tijd</p>
     <div class="hero-time">
-      <span class="live-dot" role="img" aria-label="Live"></span>
-      <h1 id="clock-heading" class="timestamp" aria-label="Huidige Unix-tijd"><output id="liveSeconds" aria-live="off">â€”</output></h1>
-      <button type="button" class="button button-outline hero-copy" data-copy="liveSeconds" aria-label="Kopiëren Unix timestamp">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2"/></svg>Kopiëren
+      <span class="live-dot" aria-label="Live" role="img"></span>
+      <h1 id="clock-heading" class="timestamp"><output id="liveSeconds" aria-label="Huidige Unix-tijd">—</output></h1>
+      <button type="button" class="copy-time" data-copy="liveSeconds">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2"/></svg>
+        Tijd kopiëren
       </button>
     </div>
-    <p class="hero-readable" id="liveReadable">â€”</p>
+    <p class="hero-readable" id="liveReadable">—</p>
     <p class="hero-caption">Seconden sinds 1 januari 1970 (UTC)</p>
-    <div class="hero-extra">
-      <span>UTC: <output id="liveIso">â€”</output></span>
-      <span class="hero-extra-divider" aria-hidden="true">Â·</span>
-      <span>Lokale tijd: <output id="liveLocal">â€”</output></span>
-    </div>
-    <output id="liveMilliseconds" class="sr-only">â€”</output>
+    <output id="liveMilliseconds" class="sr-only">—</output>
+    <output id="liveIso" class="sr-only">—</output>
+    <output id="liveLocal" class="sr-only">—</output>
   </section>
-  <section id="converter" class="converter" aria-label="Unix timestamp naar datum">
-    <div class="convert-col" aria-labelledby="to-date-title">
+  <section id="converter" class="converter" aria-label="Omrekenen">
+    <div class="convert-col left-col" aria-labelledby="to-date-title">
       <div class="col-head">
-        <h2 id="to-date-title">Unix <span class="arrow" aria-hidden="true">â†’</span> Datum</h2>
-        <p>Unix timestamp naar datum</p>
+        <h2 id="to-date-title">Unix <span aria-hidden="true" class="arrow">→</span> Datum</h2>
+        <p>Reken een Unix timestamp om naar een leesbare datum en tijd.</p>
       </div>
-      <label class="field-label" for="unixInput">Voer een Unix timestamp in</label>
-      <input type="text" id="unixInput" class="input-xl mono" autocomplete="off" inputmode="decimal" spellcheck="false" aria-describedby="inputNotice">
-      <label class="field-label unit-label" for="unitSelector">Eenheid invoer</label>
+      <label class="sr-only" for="unixInput">Voer een Unix timestamp in</label>
+      <input id="unixInput" class="timestamp-input" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="inputNotice">
       <select id="unitSelector" class="sr-only" aria-label="Eenheid invoer">
-        <option value="auto">Automatisch herkennen</option><option value="s">Seconden</option>
-        <option value="ms">Milliseconden</option><option value="us">Microseconden</option><option value="ns">Nanoseconden</option>
+        <option value="s">Seconden</option>
+        <option value="ms">Milliseconden</option>
+        <option value="us">Microseconden</option>
+        <option value="ns">Nanoseconden</option>
       </select>
       <div class="unit-tabs" role="group" aria-label="Eenheid invoer">
-        <button type="button" class="unit-choice is-active" data-unit="auto" aria-pressed="true">Automatisch herkennen</button>
-        <button type="button" class="unit-choice" data-unit="s" aria-pressed="false">Seconden</button>
-        <button type="button" class="unit-choice" data-unit="ms" aria-pressed="false">ms</button>
-        <button type="button" class="unit-choice" data-unit="us" aria-pressed="false">Âµs</button>
-        <button type="button" class="unit-choice" data-unit="ns" aria-pressed="false">ns</button>
+        <button class="unit-choice is-active" type="button" data-unit="s" aria-pressed="true">Seconden</button>
+        <button class="unit-choice" type="button" data-unit="ms" aria-pressed="false">Milliseconden</button>
+        <button class="unit-choice" type="button" data-unit="us" aria-pressed="false">Microseconden</button>
+        <button class="unit-choice" type="button" data-unit="ns" aria-pressed="false">Nanoseconden</button>
       </div>
-      <p id="inputNotice" class="feedback" role="status" aria-live="polite"></p>
-      <div class="row-between zone-row">
-        <label class="field-label" for="zoneSelect">Tijdzone tonen</label>
-        <select id="zoneSelect" class="compact-select" aria-label="Tijdzone tonen">
-          <option value="local">Mijn lokale tijdzone</option><option value="UTC">UTC</option>
-          <option value="Europe/Brussels">Brussels</option><option value="Europe/London">London</option>
-          <option value="America/New_York">New York</option><option value="America/Los_Angeles">Los Angeles</option>
-          <option value="Asia/Tokyo">Tokyo</option><option value="Asia/Kolkata">Kolkata</option>
-          <option value="Australia/Sydney">Sydney</option>
-        </select>
-      </div>
+      <p class="field-label output-label">Datum en tijd (UTC)</p>
       <div class="result-surface">
-        <p class="result-label">Datum en tijd (UTC)</p>
-        <div class="row-between">
-          <output id="unixUtc" class="result-text mono">â€”</output>
-          <button class="icon-copy" type="button" data-copy="unixUtc" aria-label="Kopiëren UTC date"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2"/></svg><span>Kopiëren</span></button>
-        </div>
+        <output id="unixUtc" class="converted-value mono">—</output>
+        <button class="inline-copy" data-copy="unixUtc" type="button" aria-label="Kopiëren converted date">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2"/></svg>
+          Kopiëren
+        </button>
       </div>
-      <div class="sub-result">
-        <span>Gekozen tijdzone</span>
-        <output class="mono" id="unixLocal">â€”</output>
-      </div>
-      <div class="sub-result">
-        <span>ISO 8601</span>
-        <output class="mono" id="unixIso">â€”</output>
-      </div>
-      <div class="minor-actions"><button type="button" class="text-action" data-now>Huidige tijd</button><button type="button" class="text-action" data-share>Link kopiëren</button></div>
-      <output id="unixRelative" class="sr-only">â€”</output>
+      <p class="feedback" id="inputNotice" role="status" aria-live="polite"></p>
+      <output id="unixIso" class="sr-only">—</output>
+      <output id="unixRelative" class="sr-only">—</output>
     </div>
-    <div class="convert-col" aria-labelledby="to-unix-title">
+    <div class="convert-col right-col" aria-labelledby="to-unix-title">
       <div class="col-head">
-        <h2 id="to-unix-title">Datum <span class="arrow" aria-hidden="true">â†’</span> Unix</h2>
-        <p>Datum naar Unix timestamp</p>
+        <h2 id="to-unix-title">Datum <span aria-hidden="true" class="arrow">→</span> Unix</h2>
+        <p>Reken een leesbare datum en tijd om naar een Unix timestamp.</p>
       </div>
-      <label class="field-label" for="dateInput">Kies een datum en tijd</label>
-      <input id="dateInput" class="input-xl date-picker" type="datetime-local" step="1" aria-describedby="dateNotice">
-      <div class="basis-row">
-        <label class="field-label" for="dateBasis">Interpreteer als</label>
-        <select class="compact-select" id="dateBasis"><option value="utc">UTC</option><option value="local">Mijn lokale tijdzone</option></select>
+      <div class="date-time-inputs">
+        <label class="sr-only" for="dateInput">Kies een datum en tijd</label>
+        <input id="dateInput" type="date" aria-describedby="dateNotice">
+        <label class="sr-only" for="timeInput">Tijd</label>
+        <input id="timeInput" type="time" step="1" aria-describedby="dateNotice">
       </div>
-      <div class="result-surface date-result">
-        <p class="result-label">Seconden sinds 1 januari 1970 (UTC)</p>
-        <div class="row-between">
-          <output id="dateSec" class="result-text mono">â€”</output>
-          <button class="icon-copy" type="button" data-copy="dateSec" aria-label="Kopiëren Unix seconds"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2"/></svg><span>Kopiëren</span></button>
-        </div>
-      </div>
-      <div class="sub-result">
-        <span>Milliseconden</span>
-        <output class="mono" id="dateMs">â€”</output>
-        <button class="icon-only" data-copy="dateMs" type="button" aria-label="Kopiëren milliseconds">â†—</button>
-      </div>
-      <div class="sub-result">
-        <span>Microseconden</span>
-        <output class="mono" id="dateUs">â€”</output>
-        <button class="icon-only" data-copy="dateUs" type="button" aria-label="Kopiëren microseconds">â†—</button>
-      </div>
-      <div class="sub-result">
-        <span>Nanoseconden</span>
-        <output class="mono" id="dateNs">â€”</output>
-        <button class="icon-only" data-copy="dateNs" type="button" aria-label="Kopiëren nanoseconds">â†—</button>
+      <label class="field-label timezone-label" for="dateZoneSelect">Tijdzone tonen</label>
+      <select id="dateZoneSelect" class="timezone-select">
+        <option value="UTC">UTC (Coordinated Universal Time)</option>
+        <option value="local">Mijn lokale tijdzone</option>
+        <option value="Europe/Brussels">Europe/Brussels</option>
+        <option value="Europe/London">Europe/London</option>
+        <option value="America/New_York">America/New_York</option>
+        <option value="America/Los_Angeles">America/Los_Angeles</option>
+        <option value="Asia/Tokyo">Asia/Tokyo</option>
+        <option value="Asia/Kolkata">Asia/Kolkata</option>
+        <option value="Australia/Sydney">Australia/Sydney</option>
+      </select>
+      <p class="field-label date-output-label">Unix timestamp (seconden)</p>
+      <div class="result-surface">
+        <output id="dateSec" class="converted-value mono">—</output>
+        <button class="inline-copy" type="button" data-copy="dateSec" aria-label="Kopiëren Unix seconds">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2"/></svg>
+          Kopiëren
+        </button>
       </div>
       <p id="dateNotice" class="feedback" role="status" aria-live="polite"></p>
     </div>
   </section>
-  <section class="precision" aria-labelledby="precision-title">
-    <h2 class="sr-only" id="precision-title">Alle timestamp-eenheden omrekenen</h2>
-    <div class="precision-item"><span>Seconden</span><div class="row-between"><output id="unixSeconds" class="mono">â€”</output><button type="button" data-copy="unixSeconds" aria-label="Kopiëren seconds" class="icon-only">â§‰</button></div></div>
-    <div class="precision-item"><span>Milliseconden</span><div class="row-between"><output id="unixMs" class="mono">â€”</output><button type="button" data-copy="unixMs" aria-label="Kopiëren milliseconds" class="icon-only">â§‰</button></div></div>
-    <div class="precision-item"><span>Microseconden</span><div class="row-between"><output id="unixUs" class="mono">â€”</output><button type="button" data-copy="unixUs" aria-label="Kopiëren microseconds" class="icon-only">â§‰</button></div></div>
-    <div class="precision-item"><span>Nanoseconden</span><div class="row-between"><output id="unixNs" class="mono">â€”</output><button type="button" data-copy="unixNs" aria-label="Kopiëren nanoseconds" class="icon-only">â§‰</button></div></div>
-  </section>
   <section class="below" aria-label="Unix time explanation and references">
-    <article id="about" class="explain">
+    <article class="explain" id="about">
       <h2>Wat is Unix-tijd?</h2>
       <p>Unix-tijd, ook epochtijd genoemd, telt het aantal seconden sinds 1 januari 1970 om 00:00:00 UTC. Software gebruikt dit formaat in API&#x27;s, databanken en logbestanden.</p>
       <p>Een Unix timestamp is niet gebonden aan jouw tijdzone. Hetzelfde moment wordt wereldwijd anders weergegeven. Sommige systemen slaan milliseconden, microseconden of nanoseconden op in plaats van seconden.</p>
-      <details class="reference-details">
-        <summary>Hetzelfde moment in vier Unix-formaten</summary>
-        <div class="table-scroll"><table>
-          <thead><tr><th>Formaat</th><th>Voorbeeld</th><th>Datum in UTC</th></tr></thead>
-          <tbody>
-          <tr><td>Seconden</td><td><code>1735689600</code></td><td>2025-01-01 00:00:00 UTC</td></tr>
-          <tr><td>Milliseconden</td><td><code>1735689600000</code></td><td>2025-01-01 00:00:00 UTC</td></tr>
-          <tr><td>Microseconden</td><td><code>1735689600000000</code></td><td>2025-01-01 00:00:00 UTC</td></tr>
-          <tr><td>Nanoseconden</td><td><code>1735689600000000000</code></td><td>2025-01-01 00:00:00 UTC</td></tr>
-          </tbody>
-        </table></div>
-      </details>
     </article>
-    <div class="references" aria-labelledby="ref-title">
-      <h2 id="ref-title">Unix-tijd in programmeertalen</h2>
-      <p class="sr-only">Voorbeelden om de huidige timestamp op te halen of seconden om te rekenen naar een datum.</p>
+    <section class="references" aria-labelledby="references-heading">
+      <h2 id="references-heading">HANDIGE REFERENTIES</h2>
       <div class="reference-links">
         <details><summary>Unix-tijd in Python</summary><pre><code>import datetime
 now = int(datetime.datetime.now(datetime.timezone.utc).timestamp())
 date = datetime.datetime.fromtimestamp(now, datetime.timezone.utc)</code></pre></details>
+        <details><summary>Unix-tijd in C#</summary><pre><code>long seconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+DateTimeOffset dt = DateTimeOffset.FromUnixTimeSeconds(seconds);</code></pre></details>
         <details><summary>Unix-tijd in JavaScript</summary><pre><code>const seconds = Math.floor(Date.now() / 1000);
-const iso = new Date(seconds * 1000).toISOString();</code></pre></details>
+const date = new Date(seconds * 1000);</code></pre></details>
+        <details><summary>Unix-tijd in Go</summary><pre><code>now := time.Now().Unix()
+date := time.Unix(now, 0).UTC()</code></pre></details>
         <details><summary>Unix-tijd in PHP</summary><pre><code>$seconds = time();
-$iso = gmdate('c', $seconds);</code></pre></details>
-        <details><summary>Unix-tijd in PostgreSQL</summary><pre><code>SELECT EXTRACT(EPOCH FROM NOW());
-SELECT TO_TIMESTAMP(1735689600);</code></pre></details>
-        <details><summary>Unix-tijd in MySQL</summary><pre><code>SELECT UNIX_TIMESTAMP();
+$date = gmdate('c', $seconds);</code></pre></details>
+        <details><summary>Unix-tijd in SQL</summary><pre><code>SELECT EXTRACT(EPOCH FROM NOW()); -- PostgreSQL
+SELECT UNIX_TIMESTAMP(); -- MySQL</code></pre></details>
+        <details><summary>Unix-tijd in Java</summary><pre><code>long seconds = java.time.Instant.now().getEpochSecond();
+java.time.Instant date = java.time.Instant.ofEpochSecond(seconds);</code></pre></details>
+        <details><summary>Alle programmeervoorbeelden →</summary><pre><code>-- PostgreSQL
+SELECT TO_TIMESTAMP(1735689600);
+-- MySQL
 SELECT FROM_UNIXTIME(1735689600);</code></pre></details>
       </div>
-    </div>
-  </section>
-  <section class="faq" aria-labelledby="faq-title">
-    <h2 id="faq-title">Veelgestelde vragen</h2>
-    <div class="faq-grid">
-      <details><summary>Zijn Unix-tijd en epochtijd hetzelfde?</summary><p>In de praktijk wel. De Unix-epoch is het startmoment: 1 januari 1970 om 00:00:00 UTC. Een Unix timestamp telt de tijd vanaf dat moment.</p></details>
-      <details><summary>Waarom heeft mijn timestamp 10, 13, 16 of 19 cijfers?</summary><p>Huidige timestamps hebben vaak 10 cijfers in seconden, 13 in milliseconden, 16 in microseconden en 19 in nanoseconden. Bij oudere datums kan de lengte verschillen. Kies dan de eenheid zelf.</p></details>
-      <details><summary>Bevat een Unix timestamp een tijdzone?</summary><p>Nee. De timestamp verwijst naar een tijdstip. Een tijdzone bepaalt alleen de weergave op de klok. Kies hierboven UTC of een andere tijdzone.</p></details>
-      <details><summary>Wat gebeurt er vóór 1970 of na 2038?</summary><p>Negatieve timestamps betekenen een moment vóór 1970. Oudere 32-bit systemen kunnen in januari 2038 vastlopen. Moderne systemen ondersteunen doorgaans latere datums, binnen hun eigen grenzen.</p></details>
-    </div>
+    </section>
   </section>
 </main>
 <footer class="footer container">
-  <div><a class="footer-brand" href="/">UNIXTIME</a><span class="footer-sep">|</span>Eén snelle tool voor Unix- en epochtijd</div>
-  <div class="footer-nav"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/about.html">About</a></div>
+  <div class="footer-left"><a href="/" class="footer-brand"><strong>UNIX</strong>TIME</a><span class="footer-divider">|</span><span>Een eenvoudige en nauwkeurige Unix timestamp-omrekenaar.</span></div>
+  <div class="footer-links"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="mailto:hello@othrys.be">Contact</a></div>
 </footer>
 </body>
 </html>

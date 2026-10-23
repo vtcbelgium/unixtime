@@ -1,8 +1,8 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Unix Time Converter — Current Unix Timestamp &amp; Epoch to Date | UnixTime</title>
 <meta name="description" content="Check the current Unix time. Instantly convert Unix timestamps to dates and dates to epoch seconds, milliseconds, microseconds or nanoseconds. UTC and time zones.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
@@ -31,9 +31,13 @@
 <a class="skip" href="#main">Skip to converter</a>
 <header class="site-header">
   <nav class="topbar container" aria-label="Main navigation">
-    <a class="brand" href="/" aria-label="UnixTime home"><strong>UNIX</strong>TIME</a>
-    <div class="nav-links"><a class="active" href="#converter">Converter</a><a href="#about">About Unix time</a></div>
-    <label class="locale-label" for="langSelect">Language
+    <a href="/" class="brand" aria-label="UnixTime home"><strong>UNIX</strong>TIME</a>
+    <div class="nav-links">
+      <a class="active" href="#converter">Converter</a>
+      <a href="#about">About Unix time</a>
+    </div>
+    <label class="locale-label" for="langSelect">
+      <span class="sr-only">Language</span>
       <select id="langSelect" class="lang-menu" aria-label="Language"><option value="https://unixtime.othrys.be/" selected>English</option>
 <option value="https://unixtime.othrys.be/nl/">Nederlands</option>
 <option value="https://unixtime.othrys.be/fr/">Français</option>
@@ -43,166 +47,124 @@
     </label>
   </nav>
 </header>
-<main id="main" class="container">
+<main class="container" id="main">
   <section class="hero" aria-labelledby="clock-heading">
-    <p class="kicker">Current Unix time</p>
+    <p class="kicker">The current Unix time</p>
     <div class="hero-time">
-      <span class="live-dot" role="img" aria-label="Live"></span>
-      <h1 id="clock-heading" class="timestamp" aria-label="Current Unix time"><output id="liveSeconds" aria-live="off">â€”</output></h1>
-      <button type="button" class="button button-outline hero-copy" data-copy="liveSeconds" aria-label="Copy Unix timestamp">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2"/></svg>Copy
+      <span class="live-dot" aria-label="Live" role="img"></span>
+      <h1 id="clock-heading" class="timestamp"><output id="liveSeconds" aria-label="The current Unix time">—</output></h1>
+      <button type="button" class="copy-time" data-copy="liveSeconds">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2"/></svg>
+        Copy time
       </button>
     </div>
-    <p class="hero-readable" id="liveReadable">â€”</p>
+    <p class="hero-readable" id="liveReadable">—</p>
     <p class="hero-caption">Seconds since 1 January 1970 (UTC)</p>
-    <div class="hero-extra">
-      <span>UTC: <output id="liveIso">â€”</output></span>
-      <span class="hero-extra-divider" aria-hidden="true">Â·</span>
-      <span>Your local time: <output id="liveLocal">â€”</output></span>
-    </div>
-    <output id="liveMilliseconds" class="sr-only">â€”</output>
+    <output id="liveMilliseconds" class="sr-only">—</output>
+    <output id="liveIso" class="sr-only">—</output>
+    <output id="liveLocal" class="sr-only">—</output>
   </section>
-  <section id="converter" class="converter" aria-label="Unix timestamp to date">
-    <div class="convert-col" aria-labelledby="to-date-title">
+  <section id="converter" class="converter" aria-label="Converter">
+    <div class="convert-col left-col" aria-labelledby="to-date-title">
       <div class="col-head">
-        <h2 id="to-date-title">Unix <span class="arrow" aria-hidden="true">â†’</span> Date</h2>
-        <p>Unix timestamp to date</p>
+        <h2 id="to-date-title">Unix <span aria-hidden="true" class="arrow">→</span> Date</h2>
+        <p>Convert a Unix timestamp to a human-readable date and time.</p>
       </div>
-      <label class="field-label" for="unixInput">Enter a Unix timestamp</label>
-      <input type="text" id="unixInput" class="input-xl mono" autocomplete="off" inputmode="decimal" spellcheck="false" aria-describedby="inputNotice">
-      <label class="field-label unit-label" for="unitSelector">Input precision</label>
+      <label class="sr-only" for="unixInput">Enter a Unix timestamp</label>
+      <input id="unixInput" class="timestamp-input" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="inputNotice">
       <select id="unitSelector" class="sr-only" aria-label="Input precision">
-        <option value="auto">Auto-detect</option><option value="s">Seconds</option>
-        <option value="ms">Milliseconds</option><option value="us">Microseconds</option><option value="ns">Nanoseconds</option>
+        <option value="s">Seconds</option>
+        <option value="ms">Milliseconds</option>
+        <option value="us">Microseconds</option>
+        <option value="ns">Nanoseconds</option>
       </select>
       <div class="unit-tabs" role="group" aria-label="Input precision">
-        <button type="button" class="unit-choice is-active" data-unit="auto" aria-pressed="true">Auto-detect</button>
-        <button type="button" class="unit-choice" data-unit="s" aria-pressed="false">Seconds</button>
-        <button type="button" class="unit-choice" data-unit="ms" aria-pressed="false">ms</button>
-        <button type="button" class="unit-choice" data-unit="us" aria-pressed="false">Âµs</button>
-        <button type="button" class="unit-choice" data-unit="ns" aria-pressed="false">ns</button>
+        <button class="unit-choice is-active" type="button" data-unit="s" aria-pressed="true">Seconds</button>
+        <button class="unit-choice" type="button" data-unit="ms" aria-pressed="false">Milliseconds</button>
+        <button class="unit-choice" type="button" data-unit="us" aria-pressed="false">Microseconds</button>
+        <button class="unit-choice" type="button" data-unit="ns" aria-pressed="false">Nanoseconds</button>
       </div>
-      <p id="inputNotice" class="feedback" role="status" aria-live="polite"></p>
-      <div class="row-between zone-row">
-        <label class="field-label" for="zoneSelect">Display time zone</label>
-        <select id="zoneSelect" class="compact-select" aria-label="Display time zone">
-          <option value="local">Your local zone</option><option value="UTC">UTC</option>
-          <option value="Europe/Brussels">Brussels</option><option value="Europe/London">London</option>
-          <option value="America/New_York">New York</option><option value="America/Los_Angeles">Los Angeles</option>
-          <option value="Asia/Tokyo">Tokyo</option><option value="Asia/Kolkata">Kolkata</option>
-          <option value="Australia/Sydney">Sydney</option>
-        </select>
-      </div>
+      <p class="field-label output-label">Date and time (UTC)</p>
       <div class="result-surface">
-        <p class="result-label">Date and time (UTC)</p>
-        <div class="row-between">
-          <output id="unixUtc" class="result-text mono">â€”</output>
-          <button class="icon-copy" type="button" data-copy="unixUtc" aria-label="Copy UTC date"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2"/></svg><span>Copy</span></button>
-        </div>
+        <output id="unixUtc" class="converted-value mono">—</output>
+        <button class="inline-copy" data-copy="unixUtc" type="button" aria-label="Copy converted date">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2"/></svg>
+          Copy
+        </button>
       </div>
-      <div class="sub-result">
-        <span>Selected time zone</span>
-        <output class="mono" id="unixLocal">â€”</output>
-      </div>
-      <div class="sub-result">
-        <span>ISO 8601</span>
-        <output class="mono" id="unixIso">â€”</output>
-      </div>
-      <div class="minor-actions"><button type="button" class="text-action" data-now>Use current time</button><button type="button" class="text-action" data-share>Copy link</button></div>
-      <output id="unixRelative" class="sr-only">â€”</output>
+      <p class="feedback" id="inputNotice" role="status" aria-live="polite"></p>
+      <output id="unixIso" class="sr-only">—</output>
+      <output id="unixRelative" class="sr-only">—</output>
     </div>
-    <div class="convert-col" aria-labelledby="to-unix-title">
+    <div class="convert-col right-col" aria-labelledby="to-unix-title">
       <div class="col-head">
-        <h2 id="to-unix-title">Date <span class="arrow" aria-hidden="true">â†’</span> Unix</h2>
-        <p>Date to Unix timestamp</p>
+        <h2 id="to-unix-title">Date <span aria-hidden="true" class="arrow">→</span> Unix</h2>
+        <p>Convert a human-readable date and time to a Unix timestamp.</p>
       </div>
-      <label class="field-label" for="dateInput">Select date and time</label>
-      <input id="dateInput" class="input-xl date-picker" type="datetime-local" step="1" aria-describedby="dateNotice">
-      <div class="basis-row">
-        <label class="field-label" for="dateBasis">Interpret input as</label>
-        <select class="compact-select" id="dateBasis"><option value="utc">UTC</option><option value="local">Your local zone</option></select>
+      <div class="date-time-inputs">
+        <label class="sr-only" for="dateInput">Select date and time</label>
+        <input id="dateInput" type="date" aria-describedby="dateNotice">
+        <label class="sr-only" for="timeInput">Time</label>
+        <input id="timeInput" type="time" step="1" aria-describedby="dateNotice">
       </div>
-      <div class="result-surface date-result">
-        <p class="result-label">Seconds since 1 January 1970 (UTC)</p>
-        <div class="row-between">
-          <output id="dateSec" class="result-text mono">â€”</output>
-          <button class="icon-copy" type="button" data-copy="dateSec" aria-label="Copy Unix seconds"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2"/></svg><span>Copy</span></button>
-        </div>
-      </div>
-      <div class="sub-result">
-        <span>Milliseconds</span>
-        <output class="mono" id="dateMs">â€”</output>
-        <button class="icon-only" data-copy="dateMs" type="button" aria-label="Copy milliseconds">â†—</button>
-      </div>
-      <div class="sub-result">
-        <span>Microseconds</span>
-        <output class="mono" id="dateUs">â€”</output>
-        <button class="icon-only" data-copy="dateUs" type="button" aria-label="Copy microseconds">â†—</button>
-      </div>
-      <div class="sub-result">
-        <span>Nanoseconds</span>
-        <output class="mono" id="dateNs">â€”</output>
-        <button class="icon-only" data-copy="dateNs" type="button" aria-label="Copy nanoseconds">â†—</button>
+      <label class="field-label timezone-label" for="dateZoneSelect">Display time zone</label>
+      <select id="dateZoneSelect" class="timezone-select">
+        <option value="UTC">UTC (Coordinated Universal Time)</option>
+        <option value="local">Your local zone</option>
+        <option value="Europe/Brussels">Europe/Brussels</option>
+        <option value="Europe/London">Europe/London</option>
+        <option value="America/New_York">America/New_York</option>
+        <option value="America/Los_Angeles">America/Los_Angeles</option>
+        <option value="Asia/Tokyo">Asia/Tokyo</option>
+        <option value="Asia/Kolkata">Asia/Kolkata</option>
+        <option value="Australia/Sydney">Australia/Sydney</option>
+      </select>
+      <p class="field-label date-output-label">Unix timestamp (seconds)</p>
+      <div class="result-surface">
+        <output id="dateSec" class="converted-value mono">—</output>
+        <button class="inline-copy" type="button" data-copy="dateSec" aria-label="Copy Unix seconds">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2"/></svg>
+          Copy
+        </button>
       </div>
       <p id="dateNotice" class="feedback" role="status" aria-live="polite"></p>
     </div>
   </section>
-  <section class="precision" aria-labelledby="precision-title">
-    <h2 class="sr-only" id="precision-title">Convert between all timestamp units</h2>
-    <div class="precision-item"><span>Seconds</span><div class="row-between"><output id="unixSeconds" class="mono">â€”</output><button type="button" data-copy="unixSeconds" aria-label="Copy seconds" class="icon-only">â§‰</button></div></div>
-    <div class="precision-item"><span>Milliseconds</span><div class="row-between"><output id="unixMs" class="mono">â€”</output><button type="button" data-copy="unixMs" aria-label="Copy milliseconds" class="icon-only">â§‰</button></div></div>
-    <div class="precision-item"><span>Microseconds</span><div class="row-between"><output id="unixUs" class="mono">â€”</output><button type="button" data-copy="unixUs" aria-label="Copy microseconds" class="icon-only">â§‰</button></div></div>
-    <div class="precision-item"><span>Nanoseconds</span><div class="row-between"><output id="unixNs" class="mono">â€”</output><button type="button" data-copy="unixNs" aria-label="Copy nanoseconds" class="icon-only">â§‰</button></div></div>
-  </section>
   <section class="below" aria-label="Unix time explanation and references">
-    <article id="about" class="explain">
+    <article class="explain" id="about">
       <h2>What is Unix time?</h2>
       <p>Unix time, also called epoch time or a Unix timestamp, counts the seconds since 1 January 1970 at 00:00:00 UTC. It is common in APIs, database records, log files and software.</p>
       <p>Unix time is independent of your local time zone. The same instant can display differently in different places. Some systems store milliseconds, microseconds or nanoseconds instead of seconds; selecting the correct precision prevents incorrect dates.</p>
-      <details class="reference-details">
-        <summary>One instant expressed in four Unix timestamp formats</summary>
-        <div class="table-scroll"><table>
-          <thead><tr><th>Format</th><th>Example</th><th>Date in UTC</th></tr></thead>
-          <tbody>
-          <tr><td>Seconds</td><td><code>1735689600</code></td><td>2025-01-01 00:00:00 UTC</td></tr>
-          <tr><td>Milliseconds</td><td><code>1735689600000</code></td><td>2025-01-01 00:00:00 UTC</td></tr>
-          <tr><td>Microseconds</td><td><code>1735689600000000</code></td><td>2025-01-01 00:00:00 UTC</td></tr>
-          <tr><td>Nanoseconds</td><td><code>1735689600000000000</code></td><td>2025-01-01 00:00:00 UTC</td></tr>
-          </tbody>
-        </table></div>
-      </details>
     </article>
-    <div class="references" aria-labelledby="ref-title">
-      <h2 id="ref-title">Unix time in programming languages</h2>
-      <p class="sr-only">Practical examples to get the current timestamp or convert Unix seconds to a date.</p>
+    <section class="references" aria-labelledby="references-heading">
+      <h2 id="references-heading">USEFUL REFERENCES</h2>
       <div class="reference-links">
         <details><summary>Unix time in Python</summary><pre><code>import datetime
 now = int(datetime.datetime.now(datetime.timezone.utc).timestamp())
 date = datetime.datetime.fromtimestamp(now, datetime.timezone.utc)</code></pre></details>
+        <details><summary>Unix time in C#</summary><pre><code>long seconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+DateTimeOffset dt = DateTimeOffset.FromUnixTimeSeconds(seconds);</code></pre></details>
         <details><summary>Unix time in JavaScript</summary><pre><code>const seconds = Math.floor(Date.now() / 1000);
-const iso = new Date(seconds * 1000).toISOString();</code></pre></details>
+const date = new Date(seconds * 1000);</code></pre></details>
+        <details><summary>Unix time in Go</summary><pre><code>now := time.Now().Unix()
+date := time.Unix(now, 0).UTC()</code></pre></details>
         <details><summary>Unix time in PHP</summary><pre><code>$seconds = time();
-$iso = gmdate('c', $seconds);</code></pre></details>
-        <details><summary>Unix time in PostgreSQL</summary><pre><code>SELECT EXTRACT(EPOCH FROM NOW());
-SELECT TO_TIMESTAMP(1735689600);</code></pre></details>
-        <details><summary>Unix time in MySQL</summary><pre><code>SELECT UNIX_TIMESTAMP();
+$date = gmdate('c', $seconds);</code></pre></details>
+        <details><summary>Unix time in SQL</summary><pre><code>SELECT EXTRACT(EPOCH FROM NOW()); -- PostgreSQL
+SELECT UNIX_TIMESTAMP(); -- MySQL</code></pre></details>
+        <details><summary>Unix time in Java</summary><pre><code>long seconds = java.time.Instant.now().getEpochSecond();
+java.time.Instant date = java.time.Instant.ofEpochSecond(seconds);</code></pre></details>
+        <details><summary>All programming examples →</summary><pre><code>-- PostgreSQL
+SELECT TO_TIMESTAMP(1735689600);
+-- MySQL
 SELECT FROM_UNIXTIME(1735689600);</code></pre></details>
       </div>
-    </div>
-  </section>
-  <section class="faq" aria-labelledby="faq-title">
-    <h2 id="faq-title">Frequently asked questions</h2>
-    <div class="faq-grid">
-      <details><summary>Is Unix time the same as epoch time?</summary><p>Usually yes. The Unix epoch is the starting instant, 1970-01-01 00:00:00 UTC. A Unix timestamp counts seconds or a finer unit relative to that instant.</p></details>
-      <details><summary>Why does my timestamp have 10, 13, 16 or 19 digits?</summary><p>Modern timestamps are often 10 digits in seconds, 13 in milliseconds, 16 in microseconds and 19 in nanoseconds. Historical dates and extreme values can have different lengths, so choose a unit explicitly when in doubt.</p></details>
-      <details><summary>Does a Unix timestamp include a time zone?</summary><p>No. It refers to an instant. A time zone only affects how that instant is displayed as a clock time. Choose UTC or another listed zone above.</p></details>
-      <details><summary>What happens before 1970 or after 2038?</summary><p>Negative timestamps represent instants before 1970. Some older systems using signed 32-bit seconds overflow in January 2038, but modern formats can support later dates. Browser date ranges still have limits.</p></details>
-    </div>
+    </section>
   </section>
 </main>
 <footer class="footer container">
-  <div><a class="footer-brand" href="/">UNIXTIME</a><span class="footer-sep">|</span>One fast tool for Unix and epoch time</div>
-  <div class="footer-nav"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/about.html">About</a></div>
+  <div class="footer-left"><a href="/" class="footer-brand"><strong>UNIX</strong>TIME</a><span class="footer-divider">|</span><span>A simple and accurate Unix timestamp converter.</span></div>
+  <div class="footer-links"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="mailto:hello@othrys.be">Contact</a></div>
 </footer>
 </body>
 </html>
