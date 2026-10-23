@@ -59,7 +59,12 @@
   }
   function copy(str,button) {
     if (!str || str==='—') return;
-    const show=()=>{const prev=button.textContent;button.textContent=word('copied','Copied!');window.setTimeout(()=>button.textContent=prev,1400);};
+    const show=()=>{
+      const previous=button.getAttribute('aria-label')||button.textContent;
+      button.setAttribute('aria-label',word('copied','Copied!'));
+      button.setAttribute('title',word('copied','Copied!'));
+      window.setTimeout(()=>{button.setAttribute('aria-label',previous);button.removeAttribute('title');},1400);
+    };
     if(navigator.clipboard && window.isSecureContext){
       navigator.clipboard.writeText(str).then(show).catch(()=>fallback());
     } else fallback();
@@ -98,6 +103,9 @@
       if(!raw || !/^\d{4}-\d\d-\d\dT\d\d:\d\d(?::\d\d)?$/.test(raw)) throw Error(word('invalidDate','Enter a valid date and time.'));
       const date = new Date(raw+($('dateBasis').value==='utc'?'Z':''));
       if(!Number.isFinite(date.getTime())) throw Error(word('invalidDate','Invalid date.'));
+      const wall=raw.length===16?raw+':00':raw;
+      const returned=$('dateBasis').value==='utc'?date.toISOString().slice(0,19):nowLocalInput(date);
+      if(returned!==wall) throw Error(word('invalidDate','Invalid or nonexistent local date/time (DST).'));
       const ns=BigInt(date.getTime())*1000000n;
       safeSet('dateSec',fmtPart(ns,NS,9));
       safeSet('dateMs',fmtPart(ns,1000000n,6));
@@ -115,6 +123,7 @@
     safeSet('liveSeconds',String(Math.floor(ms/1000)));
     safeSet('liveMilliseconds',String(ms));
     safeSet('liveIso',d.toISOString());
+    safeSet('liveReadable',formatZone(d,'UTC')+' UTC');
     safeSet('liveLocal',formatZone(d,'local'));
   }
   function init(){
@@ -127,20 +136,30 @@
     const n=new Date();
     $('dateInput').value=n.toISOString().slice(0,19);
     $('unixInput').addEventListener('input',showUnix);
-    $('unitSelector').addEventListener('change',showUnix);
+    const syncUnits=()=>{
+      const selected=$('unitSelector').value;
+      document.querySelectorAll('.unit-choice').forEach(b=>{
+        const active=b.dataset.unit===selected;
+        b.classList.toggle('is-active',active);
+        b.setAttribute('aria-pressed',String(active));
+      });
+      showUnix();
+    };
+    document.querySelectorAll('.unit-choice').forEach(button=>{
+      button.addEventListener('click',()=>{
+        $('unitSelector').value=button.dataset.unit;
+        syncUnits();
+      });
+    });
+    $('unitSelector').addEventListener('change',syncUnits);
     $('zoneSelect').addEventListener('change',showUnix);
     $('dateInput').addEventListener('input',convertDate);
-    $('dateBasis').addEventListener('change',()=>{
-      const old=$('dateBasis').value;
-      const date=new Date();
-      $('dateInput').value=old==='utc'?date.toISOString().slice(0,19):nowLocalInput(date);
-      convertDate();
-    });
+    $('dateBasis').addEventListener('change',convertDate);
     document.addEventListener('click',e=>{
       const b=e.target.closest('[data-copy]');
       if(b){ const el=$(b.dataset.copy); copy(el ? el.textContent : '',b); }
       const reset=e.target.closest('[data-now]');
-      if(reset){$('unixInput').value=String(Math.floor(Date.now()/1000));$('unitSelector').value='s';showUnix();}
+      if(reset){$('unixInput').value=String(Math.floor(Date.now()/1000));$('unitSelector').value='s';syncUnits();}
       const share=e.target.closest('[data-share]');
       if(share){
         const v=$('unixInput').value.trim();
@@ -150,7 +169,7 @@
         copy(url.toString(),share);
       }
     });
-    clock();showUnix();convertDate();
+    clock();syncUnits();convertDate();
     window.setInterval(clock,1000);
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);

@@ -39,3 +39,22 @@ Edit `translations.json`, add a full translated set (main explanatory content, t
 
 ## Ownership
 Working repo for the UnixTime micro-site experiment. Keep it separate from OTHRYS code and infrastructure; all public features work independently.
+
+
+## Production publishing (Cloudflare Pages)
+Use the existing Cloudflare account responsible for \`othrys.be\`. Connect this **separate** repository:
+- GitHub: \`vtcbelgium/unixtime\`
+- Production branch: \`main\`
+- Framework preset: None
+- Build command: \`python3 build.py\`
+- Output directory: \`dist\`
+- Add custom domain: \`unixtime.othrys.be\` (Cloudflare creates/verifies the needed DNS entry)
+- Keep caching defaults; \`_headers\` handles basic security
+- Check \`https://unixtime.othrys.be/\`, \`/nl/\`, \`/sitemap.xml\`, \`/robots.txt\`, \`/privacy.html\` after connecting.
+
+No money needs to be spent solely to enable this static deployment on a suitable existing Cloudflare plan.
+Do **not** deploy the ad-supported/commercial project to Vercel Hobby, which is restricted to non-commercial sites.
+Do **not** add AdSense before account/site approval and required privacy/consent work.
+
+## Design previews
+[Desktop](preview/desktop.png) · [Mobile](preview/mobile.png)

@@ -64,7 +64,11 @@
     "copied": "Copied!",
     "detected": "Interpreted as",
     "autoNotice": "Select the unit manually for ambiguous or historical values.",
-    "datePrecision": "Date fields support seconds; finer values are zero-padded."
+    "datePrecision": "Date fields support seconds; finer values are zero-padded.",
+    "NAV_CONVERTER": "Converter",
+    "NAV_ABOUT": "About Unix time",
+    "DATE_SHORT": "Date",
+    "UNIX_IN": "Unix time in"
   },
   "nl": {
     "SEO_TITLE": "Unix-tijd omrekenen — Huidige Unix timestamp & epoch naar datum | UnixTime",
@@ -131,7 +135,11 @@
     "copied": "Gekopieerd!",
     "detected": "Herkend als",
     "autoNotice": "Kies bij oudere of onduidelijke waarden de eenheid zelf.",
-    "datePrecision": "Datumvelden werken tot op seconden; kleinere eenheden worden met nullen aangevuld."
+    "datePrecision": "Datumvelden werken tot op seconden; kleinere eenheden worden met nullen aangevuld.",
+    "NAV_CONVERTER": "Omrekenen",
+    "NAV_ABOUT": "Over Unix-tijd",
+    "DATE_SHORT": "Datum",
+    "UNIX_IN": "Unix-tijd in"
   },
   "fr": {
     "SEO_TITLE": "Convertisseur Unix — Heure Unix actuelle et timestamp vers date | UnixTime",
@@ -198,7 +206,11 @@
     "copied": "Copié !",
     "detected": "Interprété en",
     "autoNotice": "Choisissez l'unité vous-même pour les valeurs historiques ou ambiguës.",
-    "datePrecision": "Les champs de date ont une précision à la seconde ; les unités plus petites sont complétées par des zéros."
+    "datePrecision": "Les champs de date ont une précision à la seconde ; les unités plus petites sont complétées par des zéros.",
+    "NAV_CONVERTER": "Convertisseur",
+    "NAV_ABOUT": "À propos du temps Unix",
+    "DATE_SHORT": "Date",
+    "UNIX_IN": "Temps Unix en"
   },
   "de": {
     "SEO_TITLE": "Unix-Zeit umrechnen — Aktueller Unix-Timestamp und Datum | UnixTime",
@@ -265,7 +277,11 @@
     "copied": "Kopiert!",
     "detected": "Interpretiert als",
     "autoNotice": "Bei historischen oder mehrdeutigen Werten die Einheit manuell wählen.",
-    "datePrecision": "Die Datumseingabe ist sekundengenau; kleinere Einheiten erhalten Nullen."
+    "datePrecision": "Die Datumseingabe ist sekundengenau; kleinere Einheiten erhalten Nullen.",
+    "NAV_CONVERTER": "Umrechner",
+    "NAV_ABOUT": "Über Unix-Zeit",
+    "DATE_SHORT": "Datum",
+    "UNIX_IN": "Unix-Zeit in"
   },
   "es": {
     "SEO_TITLE": "Convertidor de tiempo Unix — Epoch a fecha y hora actual | UnixTime",
@@ -332,7 +348,11 @@
     "copied": "¡Copiado!",
     "detected": "Interpretado como",
     "autoNotice": "Selecciona la unidad manualmente para valores históricos o ambiguos.",
-    "datePrecision": "La fecha se introduce con precisión de segundos; las unidades menores se rellenan con ceros."
+    "datePrecision": "La fecha se introduce con precisión de segundos; las unidades menores se rellenan con ceros.",
+    "NAV_CONVERTER": "Convertidor",
+    "NAV_ABOUT": "Sobre el tiempo Unix",
+    "DATE_SHORT": "Fecha",
+    "UNIX_IN": "Tiempo Unix en"
   },
   "pt": {
     "SEO_TITLE": "Conversor de tempo Unix — Timestamp atual e epoch para data | UnixTime",
@@ -399,6 +419,10 @@
     "copied": "Copiado!",
     "detected": "Interpretado como",
     "autoNotice": "Escolha a unidade para valores históricos ou ambíguos.",
-    "datePrecision": "A data é introduzida com precisão de segundos; as unidades menores recebem zeros."
+    "datePrecision": "A data é introduzida com precisão de segundos; as unidades menores recebem zeros.",
+    "NAV_CONVERTER": "Conversor",
+    "NAV_ABOUT": "Sobre o tempo Unix",
+    "DATE_SHORT": "Data",
+    "UNIX_IN": "Tempo Unix em"
   }
 }

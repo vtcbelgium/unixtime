@@ -54,3 +54,16 @@ out+=['  <url><loc>'+BASE+'/about.html</loc></url>','  <url><loc>'+BASE+'/privac
 (ROOT/'sitemap.xml').write_text('\n'.join(out)+'\n',encoding='utf-8')
 (ROOT/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+BASE+'/sitemap.xml\n',encoding='utf-8')
 print('Generated',len(languages),'fully localized indexable pages and sitemap')
+# Produce a clean deployable directory: exclude template, translations, tests and README.
+import shutil
+output=ROOT/'dist'
+if output.exists(): shutil.rmtree(output)
+output.mkdir()
+for filename in ('index.html','styles.css','app.js','favicon.svg','robots.txt','sitemap.xml','about.html','privacy.html','404.html','_headers'):
+    shutil.copy2(ROOT/filename,output/filename)
+for lang in languages:
+    if lang=='en':continue
+    target=output/lang
+    target.mkdir()
+    shutil.copy2(ROOT/lang/'index.html',target/'index.html')
+print('Built dist/ —',len(list(output.rglob('*'))),'files/directories (ready for commercial-permitted static hosting).')
