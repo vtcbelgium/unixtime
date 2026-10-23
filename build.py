@@ -26,7 +26,7 @@ def canonical(code):
 alternates='\n'.join('<link rel="alternate" hreflang="'+code+'" href="'+canonical(code)+'">' for code in languages)
 alternates+='\n<link rel="alternate" hreflang="x-default" href="'+canonical('en')+'">'
 for code,data in locales.items():
-    choices='\n'.join('<option value="'+canonical(c)+'"'+(' selected' if c==code else '')+'>'+escape(name)+'</option>' for c,name in languages.items())
+    choices='\n'.join('<option value="'+('/' if c=='en' else '/'+c+'/')+'"'+(' selected' if c==code else '')+'>'+escape(name)+'</option>' for c,name in languages.items())
     schema={'@context':'https://schema.org','@type':'WebApplication','name':'UnixTime','url':canonical(code),
         'description':data['SEO_DESC'],'applicationCategory':'UtilitiesApplication','operatingSystem':'Any',
         'inLanguage':code,'isAccessibleForFree':True,'offers':{'@type':'Offer','price':'0','priceCurrency':'EUR'}}
