@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://unixtime.othrys.be/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://unixtime.othrys.be/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://unixtime.othrys.be/nl/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://unixtime.othrys.be/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://unixtime.othrys.be/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://unixtime.othrys.be/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://unixtime.othrys.be/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://unixtime.othrys.be/"/>
+  </url>
+  <url>
+    <loc>https://unixtime.othrys.be/nl/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://unixtime.othrys.be/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://unixtime.othrys.be/nl/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://unixtime.othrys.be/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://unixtime.othrys.be/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://unixtime.othrys.be/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://unixtime.othrys.be/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://unixtime.othrys.be/"/>
+  </url>
+  <url>
+    <loc>https://unixtime.othrys.be/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://unixtime.othrys.be/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://unixtime.othrys.be/nl/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://unixtime.othrys.be/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://unixtime.othrys.be/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://unixtime.othrys.be/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://unixtime.othrys.be/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://unixtime.othrys.be/"/>
+  </url>
+  <url>
+    <loc>https://unixtime.othrys.be/de/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://unixtime.othrys.be/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://unixtime.othrys.be/nl/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://unixtime.othrys.be/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://unixtime.othrys.be/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://unixtime.othrys.be/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://unixtime.othrys.be/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://unixtime.othrys.be/"/>
+  </url>
+  <url>
+    <loc>https://unixtime.othrys.be/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://unixtime.othrys.be/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://unixtime.othrys.be/nl/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://unixtime.othrys.be/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://unixtime.othrys.be/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://unixtime.othrys.be/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://unixtime.othrys.be/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://unixtime.othrys.be/"/>
+  </url>
+  <url>
+    <loc>https://unixtime.othrys.be/pt/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://unixtime.othrys.be/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://unixtime.othrys.be/nl/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://unixtime.othrys.be/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://unixtime.othrys.be/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://unixtime.othrys.be/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://unixtime.othrys.be/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://unixtime.othrys.be/"/>
+  </url>
+  <url><loc>https://unixtime.othrys.be/about.html</loc></url>
+  <url><loc>https://unixtime.othrys.be/privacy.html</loc></url>
+</urlset>

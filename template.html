@@ -1,0 +1,116 @@
+﻿<!doctype html>
+<html lang="@@LANG@@" dir="@@DIRECTION@@">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>@@SEO_TITLE@@</title>
+<meta name="description" content="@@SEO_DESC@@">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="theme-color" content="#255bd8">
+<link rel="canonical" href="@@CANONICAL@@">
+@@ALTERNATES@@
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/styles.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="UnixTime">
+<meta property="og:title" content="@@SEO_TITLE@@">
+<meta property="og:description" content="@@SEO_DESC@@">
+<meta property="og:url" content="@@CANONICAL@@">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">@@SCHEMA@@</script>
+<script>window.UNIXTIME_TEXT=@@CLIENT_TEXT@@;</script>
+<script src="/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">@@SKIP@@</a>
+<header><div class="topbar">
+<a class="brand" href="/"><span class="brand-mark">U</span><span>unix<span style="color:#255bd8">time</span></span></a>
+<div class="top-meta"><span>@@TAGLINE@@</span><label for="langSelect" class="tiny">@@LANGUAGE@@</label><select id="langSelect" class="lang-menu" aria-label="@@LANGUAGE@@">@@LANG_CHOICES@@</select></div>
+</div></header>
+<main id="main" class="container">
+<section class="intro"><p class="eyebrow">@@EYEBROW@@</p><h1>@@HEADING@@</h1><p class="subtitle">@@SUBTITLE@@</p></section>
+<div class="grid">
+<section class="card" aria-labelledby="liveheading">
+<div class="row space card-top"><h2 id="liveheading">@@LIVE_TITLE@@</h2><span class="tag">@@LIVE_BADGE@@</span></div>
+<p class="tiny">@@UNIX_SEC@@</p><div class="live-number" id="liveSeconds" aria-live="off">â€”</div>
+<div class="row"><button type="button" class="action primary" data-copy="liveSeconds">@@COPY@@</button><button type="button" class="action" data-copy="liveMilliseconds">@@COPY_MS@@</button></div>
+<hr>
+<div class="data-row"><span class="data-label">@@MILLISECONDS@@</span><output class="data-value" id="liveMilliseconds">â€”</output><button class="action copy-small" type="button" data-copy="liveMilliseconds">@@COPY@@</button></div>
+<div class="data-row"><span class="data-label">UTC / ISO 8601</span><output class="data-value" id="liveIso">â€”</output><button class="action copy-small" type="button" data-copy="liveIso">@@COPY@@</button></div>
+<div class="data-row"><span class="data-label">@@LOCAL_TIME@@</span><output class="data-value" id="liveLocal">â€”</output><button class="action copy-small" type="button" data-copy="liveLocal">@@COPY@@</button></div>
+<p class="note">@@LIVE_NOTE@@</p>
+</section>
+<section class="card" aria-labelledby="convheading">
+<div class="row space card-top"><h2 id="convheading">@@CONVERT_TITLE@@</h2><span class="pill">s Â· ms Â· Âµs Â· ns</span></div>
+<div class="fields">
+<div class="field"><label for="unixInput">@@INPUT_LABEL@@</label><input id="unixInput" type="text" class="input-big" inputmode="decimal" spellcheck="false" autocomplete="off" aria-describedby="inputNotice"></div>
+<div class="two">
+<div class="field"><label for="unitSelector">@@UNIT_LABEL@@</label><select id="unitSelector"><option value="auto">@@AUTO@@</option><option value="s">@@SECONDS@@</option><option value="ms">@@MILLISECONDS@@</option><option value="us">@@MICROSECONDS@@</option><option value="ns">@@NANOSECONDS@@</option></select></div>
+<div class="field"><label for="zoneSelect">@@TIMEZONE_LABEL@@</label><select id="zoneSelect"><option value="local">@@BROWSER_LOCAL@@</option><option value="UTC">UTC</option><option value="Europe/Brussels">Europe/Brussels</option><option value="Europe/London">Europe/London</option><option value="America/New_York">America/New_York</option><option value="America/Los_Angeles">America/Los_Angeles</option><option value="Asia/Tokyo">Asia/Tokyo</option><option value="Asia/Kolkata">Asia/Kolkata</option><option value="Australia/Sydney">Australia/Sydney</option></select></div>
+</div>
+</div>
+<p class="info" id="inputNotice" role="status" aria-live="polite"></p>
+<div class="primary-output"><p class="result-title">@@DATE_UTC@@</p><output class="result-big" id="unixUtc">â€”</output></div>
+<div class="data-row"><span class="data-label">@@DATE_SELECTED@@</span><output class="data-value" id="unixLocal">â€”</output><button type="button" class="action copy-small" data-copy="unixLocal">@@COPY@@</button></div>
+<div class="data-row"><span class="data-label">ISO 8601</span><output class="data-value" id="unixIso">â€”</output><button type="button" class="action copy-small" data-copy="unixIso">@@COPY@@</button></div>
+<div class="data-row"><span class="data-label">@@RELATIVE@@</span><output class="data-value" id="unixRelative">â€”</output><span></span></div>
+<div class="row" style="margin-top:10px"><button class="action" type="button" data-now>@@USE_NOW@@</button><button class="action" type="button" data-share>@@SHARE@@</button></div>
+</section>
+<section class="card" aria-labelledby="precisionhead">
+<h2 id="precisionhead">@@PRECISION_TITLE@@</h2><p class="tiny">@@PRECISION_INTRO@@</p>
+<div class="data-row"><span class="data-label">@@SECONDS@@</span><output class="data-value" id="unixSeconds">â€”</output><button type="button" class="action copy-small" data-copy="unixSeconds">@@COPY@@</button></div>
+<div class="data-row"><span class="data-label">@@MILLISECONDS@@</span><output class="data-value" id="unixMs">â€”</output><button type="button" class="action copy-small" data-copy="unixMs">@@COPY@@</button></div>
+<div class="data-row"><span class="data-label">@@MICROSECONDS@@</span><output class="data-value" id="unixUs">â€”</output><button type="button" class="action copy-small" data-copy="unixUs">@@COPY@@</button></div>
+<div class="data-row"><span class="data-label">@@NANOSECONDS@@</span><output class="data-value" id="unixNs">â€”</output><button type="button" class="action copy-small" data-copy="unixNs">@@COPY@@</button></div>
+</section>
+<section class="card" aria-labelledby="datetitle">
+<h2 id="datetitle">@@DATE_TO_UNIX_TITLE@@</h2><div class="fields">
+<div class="field"><label for="dateInput">@@DATE_INPUT@@</label><input type="datetime-local" id="dateInput" step="1" aria-describedby="dateNotice"></div>
+<div class="field"><label for="dateBasis">@@INTERPRET_DATE@@</label><select id="dateBasis"><option value="utc">UTC</option><option value="local">@@BROWSER_LOCAL@@</option></select></div>
+</div>
+<div class="primary-output"><p class="result-title">@@SECONDS@@</p><output class="result-big" id="dateSec">â€”</output></div>
+<div class="data-row"><span class="data-label">@@MILLISECONDS@@</span><output class="data-value" id="dateMs">â€”</output><button class="action copy-small" type="button" data-copy="dateMs">@@COPY@@</button></div>
+<div class="data-row"><span class="data-label">@@MICROSECONDS@@</span><output class="data-value" id="dateUs">â€”</output><button class="action copy-small" type="button" data-copy="dateUs">@@COPY@@</button></div>
+<div class="data-row"><span class="data-label">@@NANOSECONDS@@</span><output class="data-value" id="dateNs">â€”</output><button class="action copy-small" type="button" data-copy="dateNs">@@COPY@@</button></div>
+<p class="info" id="dateNotice" role="status" aria-live="polite"></p>
+</section>
+</div>
+<section class="card section" aria-labelledby="explainerhead">
+<h2 id="explainerhead">@@WHAT_TITLE@@</h2>
+<p>@@WHAT_P1@@</p><p>@@WHAT_P2@@</p>
+<table class="sample-table"><caption class="tiny" style="text-align:left;margin-bottom:7px">@@EXAMPLES_TITLE@@</caption><thead><tr><th scope="col">@@FORMAT@@</th><th scope="col">@@EXAMPLE@@</th><th scope="col">@@MEANING@@</th></tr></thead><tbody>
+<tr><th scope="row">@@SECONDS@@</th><td><code>1735689600</code></td><td>2025-01-01 00:00:00 UTC</td></tr>
+<tr><th scope="row">@@MILLISECONDS@@</th><td><code>1735689600000</code></td><td>2025-01-01 00:00:00 UTC</td></tr>
+<tr><th scope="row">@@MICROSECONDS@@</th><td><code>1735689600000000</code></td><td>2025-01-01 00:00:00 UTC</td></tr>
+<tr><th scope="row">@@NANOSECONDS@@</th><td><code>1735689600000000000</code></td><td>2025-01-01 00:00:00 UTC</td></tr>
+</tbody></table>
+</section>
+<section class="card section code-list" aria-labelledby="codehead">
+<h2 id="codehead">@@CODE_TITLE@@</h2>
+<p class="tiny">@@CODE_INTRO@@</p>
+<details><summary>JavaScript</summary><pre><code>const seconds = Math.floor(Date.now() / 1000);
+const iso = new Date(seconds * 1000).toISOString();</code></pre></details>
+<details><summary>Python</summary><pre><code>import datetime
+now = int(datetime.datetime.now(datetime.timezone.utc).timestamp())
+date = datetime.datetime.fromtimestamp(now, datetime.timezone.utc)</code></pre></details>
+<details><summary>PostgreSQL</summary><pre><code>SELECT EXTRACT(EPOCH FROM NOW());
+SELECT TO_TIMESTAMP(1735689600);</code></pre></details>
+<details><summary>MySQL</summary><pre><code>SELECT UNIX_TIMESTAMP();
+SELECT FROM_UNIXTIME(1735689600);</code></pre></details>
+<details><summary>PHP</summary><pre><code>$seconds = time();
+$iso = gmdate('c', $seconds);</code></pre></details>
+</section>
+<section class="card section faq" aria-labelledby="faqhead">
+<h2 id="faqhead">@@FAQ_TITLE@@</h2>
+<details><summary>@@Q1@@</summary><p>@@A1@@</p></details>
+<details><summary>@@Q2@@</summary><p>@@A2@@</p></details>
+<details><summary>@@Q3@@</summary><p>@@A3@@</p></details>
+<details><summary>@@Q4@@</summary><p>@@A4@@</p></details>
+</section>
+</main>
+<footer class="footer"><div class="container">
+<p><strong>UnixTime</strong> Â· @@FOOTER_VALUE@@</p>
+<p>@@FOOTER_NOTE@@</p>
+<p><a href="/privacy.html">Privacy</a> Â· <a href="mailto:hello@othrys.be">Contact</a> Â· <a href="https://www.epochconverter.com/" rel="nofollow noopener" target="_blank">@@REFERENCE_LINK@@</a></p>
+</div></footer>
+</body></html>
