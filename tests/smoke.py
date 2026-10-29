@@ -25,7 +25,16 @@ for code in d:
  assert len(c.alts)==len(d)+1,(code,c.alts)
  assert all(x in s for x in ('id="unixInput"','id="dateInput"','id="liveSeconds"','application/ld+json','/app.js','/styles.css'))
  assert '<script src="https://' not in s
- print('PASS',code,'HTML, SEO and locale')
+ # The JavaScript language selector is supplemented by crawlable HTML links.
+ language_nav=re.search(r'<nav class="locale-shortcuts container"[^>]*>(.*?)</nav>',s,re.S)
+ assert language_nav, (code,'missing language navigation')
+ nav=Check();nav.feed(language_nav.group(1))
+ links=[a for t,a in nav.attrs if t=='a']
+ expected={'/' if c=='en' else '/'+c+'/' for c in d}
+ assert len(links)==len(d) and {a.get('href') for a in links}==expected, (code,links)
+ active=[a.get('href') for a in links if a.get('aria-current')=='page']
+ assert active==['/' if code=='en' else '/'+code+'/'], (code,active)
+ print('PASS',code,'HTML, SEO and crawlable locale links')
 tree=ET.parse(ROOT/'sitemap.xml')
 root=tree.getroot()
 ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
