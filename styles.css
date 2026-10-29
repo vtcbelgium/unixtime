@@ -75,6 +75,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,su
 .reference-links summary::-webkit-details-marker{display:none}
 .reference-links details[open]{grid-column:1/-1}
 .reference-links pre{white-space:pre-wrap;overflow:auto;word-break:break-word;color:#eaf0ff;background:#19243a;font:12px/1.7 var(--mono);padding:12px;border-radius:4px;margin:8px 0}
+.locale-shortcuts{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;column-gap:17px;row-gap:7px;border-top:1px solid var(--line);padding:12px 0 8px;font-size:11px}
+.locale-shortcuts a{color:#5a6577;text-decoration:none;white-space:nowrap}
+.locale-shortcuts a:hover{text-decoration:underline;color:var(--blue)}
+.locale-shortcuts a[aria-current="page"]{font-weight:700;color:var(--ink)}
 .footer{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:69px;font-size:11px;color:#5e6879}
 .footer-brand{font-weight:350;color:var(--ink);text-decoration:none;font-size:12px;white-space:nowrap}
 .footer-left{display:flex;align-items:center;flex-wrap:wrap}

@@ -14,7 +14,7 @@ locales=json.loads((ROOT/'translations.json').read_text(encoding='utf-8-sig'))
 template=(ROOT/'template.html').read_text(encoding='utf-8')
 assert set(locales)==set(languages)
 keys=set(re.findall(r'@@([A-Z][A-Z_]+)@@',template))
-generated={'ALTERNATES','LANG','DIRECTION','CANONICAL','LANG_CHOICES','SCHEMA','CLIENT_TEXT'}
+generated={'ALTERNATES','LANG','DIRECTION','CANONICAL','LANG_CHOICES','LANG_LINKS','SCHEMA','CLIENT_TEXT'}
 fields=keys-generated
 for lang,data in locales.items():
     assert fields<=set(data), (lang,fields-set(data))
@@ -27,6 +27,7 @@ alternates='\n'.join('<link rel="alternate" hreflang="'+code+'" href="'+canonica
 alternates+='\n<link rel="alternate" hreflang="x-default" href="'+canonical('en')+'">'
 for code,data in locales.items():
     choices='\n'.join('<option value="'+('/' if c=='en' else '/'+c+'/')+'"'+(' selected' if c==code else '')+'>'+escape(name)+'</option>' for c,name in languages.items())
+    links='\n'.join('<a href="'+('/' if c=='en' else '/'+c+'/')+'"'+(' aria-current="page"' if c==code else '')+'>'+escape(name)+'</a>' for c,name in languages.items())
     schema={'@context':'https://schema.org','@type':'WebApplication','name':'UnixTime','url':canonical(code),
         'description':data['SEO_DESC'],'applicationCategory':'UtilitiesApplication','operatingSystem':'Any',
         'inLanguage':code,'isAccessibleForFree':True,'offers':{'@type':'Offer','price':'0','priceCurrency':'EUR'}}
@@ -34,7 +35,7 @@ for code,data in locales.items():
     script_data.update({'seconds':data['SECONDS'],'milliseconds':data['MILLISECONDS'],'microseconds':data['MICROSECONDS'],'nanoseconds':data['NANOSECONDS']})
     page=template
     special={'ALTERNATES':alternates,'LANG':code,'DIRECTION':'ltr','CANONICAL':canonical(code),
-        'LANG_CHOICES':choices,'SCHEMA':json.dumps(schema,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c'),
+        'LANG_CHOICES':choices,'LANG_LINKS':links,'SCHEMA':json.dumps(schema,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c'),
         'CLIENT_TEXT':json.dumps(script_data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c')}
     for key,val in {**data,**special}.items():
         page=page.replace('@@'+key+'@@',escape(val,quote=True) if key not in special else val)
