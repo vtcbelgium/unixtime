@@ -1,3 +1,4 @@
+// [HARVESTED TO OTHRYS-BLOCKS] target: blocks/time/epoch-timestamp-toolkit/index.js | date: 2026-11-05 | status: HARVEST_RETAIN
 /* UnixTime: local-only, precision-safe Unix date converter. */
 (()=>{
 'use strict';
