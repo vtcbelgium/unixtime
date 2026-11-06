@@ -187,44 +187,6 @@ java.time.Instant date = java.time.Instant.ofEpochSecond(seconds);</code></pre><
       </div>
     </section>
   </section>
-
-  <!-- METIS PRIVACY & LOCAL TIMING ADVISORY -->
-  <section class="advisory-card-section">
-    <div class="advisory-card">
-      <div class="advisory-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-        </svg>
-      </div>
-      <div class="advisory-content">
-        <span class="advisory-eyebrow">METIS SECURITY &amp; TIME ARCHITECTURE</span>
-        <h3>Why In-Browser Epoch Conversion Protects Developer Telemetry</h3>
-        <p>
-          Typical epoch tools send timestamps and system clock queries to remote server endpoints, allowing fingerprinting of device clock skew, local timezone shifts, and IP locations. UnixTime guarantees zero server requests: all conversions run locally in your browser with microsecond precision.
-        </p>
-        <div class="advisory-grid">
-          <div class="advisory-item warning">
-            <strong>Remote Time Endpoints:</strong>
-            <ul>
-              <li>Upload entered timestamps to remote servers</li>
-              <li>Fingerprint browser clock skew &amp; system time drift</li>
-              <li>Track user timezones, geolocation, and IPs</li>
-              <li>Require active network roundtrips for conversion</li>
-            </ul>
-          </div>
-          <div class="advisory-item sovereign">
-            <strong>UnixTime Architecture:</strong>
-            <ul>
-              <li>100% in-browser BigInt nanosecond arithmetic</li>
-              <li>Zero tracking cookies or remote telemetry calls</li>
-              <li>Instant conversion with zero network roundtrips</li>
-              <li>Native Intl timezone parsing without external bloat</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
 <!-- CRAWLABLE LOCALE SHORTCUTS (REQUIRED BY SMOKE TESTS) -->

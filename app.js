@@ -151,16 +151,16 @@ function init(){
   const btn=e.target.closest('[data-copy]');
   if(btn){const target=$(btn.dataset.copy);if(target)copy(target.textContent,btn);}
  });
- const themeToggle=theme-toggle;
-  if(themeToggle){
-   themeToggle.addEventListener('click',()=>{
-    const current=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';
-    const next=current==='dark'?'light':'dark';
-    document.documentElement.setAttribute('data-theme',next);
-    try{localStorage.setItem('othrys-theme',next);}catch(e){}
-   });
-  }
-  updateClock();sync();convertDate();
+ const themeToggle=$('theme-toggle');
+ if(themeToggle){
+  themeToggle.addEventListener('click',()=>{
+   const current=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';
+   const next=current==='dark'?'light':'dark';
+   document.documentElement.setAttribute('data-theme',next);
+   try{localStorage.setItem('othrys-theme',next);}catch(e){}
+  });
+ }
+ updateClock();sync();convertDate();
  window.setInterval(updateClock,1000);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);

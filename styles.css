@@ -638,116 +638,6 @@ body {
 }
 
 /* ==========================================================================
-   METIS SECURITY & PRIVACY ADVISORY
-   ========================================================================== */
-.advisory-card-section {
-  padding: 44px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.advisory-card {
-  display: flex;
-  gap: 24px;
-  padding: 32px;
-  border-radius: 18px;
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.03) 0%, rgba(59, 130, 246, 0.08) 100%);
-}
-
-.advisory-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: var(--accent-glow);
-  color: var(--accent);
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-}
-
-.advisory-content {
-  flex: 1;
-}
-
-.advisory-eyebrow {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: var(--accent);
-}
-
-.advisory-content h3 {
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin: 6px 0 10px;
-}
-
-.advisory-content p {
-  font-size: 13.5px;
-  color: var(--muted);
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.advisory-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.advisory-item {
-  padding: 16px 20px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-}
-
-.advisory-item strong {
-  display: block;
-  font-size: 12.5px;
-  margin-bottom: 10px;
-}
-
-.advisory-item.warning strong {
-  color: var(--danger);
-}
-
-.advisory-item.sovereign strong {
-  color: var(--accent);
-}
-
-.advisory-item ul {
-  list-style: none;
-  font-size: 12px;
-  color: var(--muted);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.advisory-item li {
-  position: relative;
-  padding-left: 14px;
-}
-
-.advisory-item.warning li::before {
-  content: "✕";
-  position: absolute;
-  left: 0;
-  color: var(--danger);
-  font-size: 10px;
-}
-
-.advisory-item.sovereign li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--green);
-  font-weight: 800;
-}
-
-/* ==========================================================================
    LOCALE SHORTCUTS & FOOTER HUB
    ========================================================================== */
 .locale-shortcuts {
@@ -968,9 +858,6 @@ body {
   }
   .references {
     padding-left: 0;
-  }
-  .advisory-grid {
-    grid-template-columns: 1fr;
   }
   .footer-sitemap-grid {
     grid-template-columns: repeat(2, 1fr);
