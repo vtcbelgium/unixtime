@@ -61,14 +61,17 @@ function copy(text,button){
 function convertUnix(){
  const notice=$('inputNotice');
  try{
-  const parsed=nsOf($('unixInput').value,$('unitSelector').value);
+  const inputEl=$('unixInput');
+  const unitEl=$('unitSelector');
+  if(!inputEl||!unitEl)return;
+  const parsed=nsOf(inputEl.value,unitEl.value);
   const date=dateFromNs(parsed.ns);
   safeSet('unixUtc',formatUTC(date));
   safeSet('unixIso',date.toISOString());
-  notice.textContent='';notice.classList.remove('error');
+  if(notice){notice.textContent='';notice.classList.remove('error');}
  }catch(e){
   safeSet('unixUtc','—');safeSet('unixIso','—');
-  notice.textContent=e.message;notice.classList.add('error');
+  if(notice){notice.textContent=e.message;notice.classList.add('error');}
  }
 }
 function zoneParts(instant,zone){
@@ -102,11 +105,14 @@ function parseDateInput(day,time,zone){
 function convertDate(){
  const notice=$('dateNotice');
  try{
-  const d=parseDateInput($('dateInput').value,$('timeInput').value,$('dateZoneSelect').value);
+  const dIn=$('dateInput'),tIn=$('timeInput'),zSel=$('dateZoneSelect');
+  if(!dIn||!tIn||!zSel)return;
+  const d=parseDateInput(dIn.value,tIn.value,zSel.value);
   safeSet('dateSec',String(Math.floor(d.getTime()/1000)));
-  notice.textContent='';notice.classList.remove('error');
+  if(notice){notice.textContent='';notice.classList.remove('error');}
  }catch(e){
-  safeSet('dateSec','—');notice.textContent=e.message;notice.classList.add('error');
+  safeSet('dateSec','—');
+  if(notice){notice.textContent=e.message;notice.classList.add('error');}
  }
 }
 function updateClock(){
@@ -118,50 +124,63 @@ function updateClock(){
  safeSet('liveReadable',formatReadable(date));
 }
 function init(){
- const q=new URLSearchParams(location.search),shared=q.get('ts');
- $('unixInput').value=shared&&/^[+-]?\d{1,25}(?:\.\d{1,9})?$/.test(shared)?shared:String(Math.floor(Date.now()/1000));
- const unit=q.get('unit');if(['s','ms','us','ns'].includes(unit))$('unitSelector').value=unit;
- const sync=()=>{
-  const chosen=$('unitSelector').value;
-  document.querySelectorAll('.unit-choice').forEach(btn=>{
-   const active=btn.dataset.unit===chosen;
-   btn.classList.toggle('is-active',active);btn.setAttribute('aria-pressed',String(active));
-  });
-  convertUnix();
- };
- document.querySelectorAll('.unit-choice').forEach(btn=>btn.addEventListener('click',()=>{$('unitSelector').value=btn.dataset.unit;sync();}));
- $('unitSelector').addEventListener('change',sync);
- $('unixInput').addEventListener('input',convertUnix);
- const iso=new Date().toISOString();$('dateInput').value=iso.slice(0,10);$('timeInput').value=iso.slice(11,19);
- for(const id of ['dateInput','timeInput'])$(id).addEventListener('input',convertDate);
- $('dateZoneSelect').addEventListener('change',convertDate);
- $('langSelect').addEventListener('change',e=>location.assign(e.target.value));
- const syncNavigation=()=>{
-  const active=location.hash==='#about'?'#about':'#converter';
-  document.querySelectorAll('.nav-links a').forEach(link=>{
-   const selected=link.getAttribute('href')===active;
-   link.classList.toggle('active',selected);
-   if(selected)link.setAttribute('aria-current','location');
-   else link.removeAttribute('aria-current');
-  });
- };
- window.addEventListener('hashchange',syncNavigation);
- syncNavigation();
- document.addEventListener('click',e=>{
-  const btn=e.target.closest('[data-copy]');
-  if(btn){const target=$(btn.dataset.copy);if(target)copy(target.textContent,btn);}
- });
- const themeToggle=$('theme-toggle');
- if(themeToggle){
-  themeToggle.addEventListener('click',()=>{
-   const current=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';
-   const next=current==='dark'?'light':'dark';
-   document.documentElement.setAttribute('data-theme',next);
-   try{localStorage.setItem('othrys-theme',next);}catch(e){}
-  });
- }
- updateClock();sync();convertDate();
+ updateClock();
  window.setInterval(updateClock,1000);
+ try{
+  const q=new URLSearchParams(location.search),shared=q.get('ts');
+  const inputEl=$('unixInput');
+  if(inputEl)inputEl.value=shared&&/^[+-]?\d{1,25}(?:\.\d{1,9})?$/.test(shared)?shared:String(Math.floor(Date.now()/1000));
+  const sel=$('unitSelector');
+  const unit=q.get('unit');if(sel&&['s','ms','us','ns'].includes(unit))sel.value=unit;
+  const sync=()=>{
+   if(!sel)return;
+   const chosen=sel.value;
+   document.querySelectorAll('.unit-choice').forEach(btn=>{
+    const active=btn.dataset.unit===chosen;
+    btn.classList.toggle('is-active',active);btn.setAttribute('aria-pressed',String(active));
+   });
+   convertUnix();
+  };
+  document.querySelectorAll('.unit-choice').forEach(btn=>btn.addEventListener('click',()=>{(sel?sel.value=btn.dataset.unit:null);sync();}));
+  if(sel)sel.addEventListener('change',sync);
+  if(inputEl)inputEl.addEventListener('input',convertUnix);
+  const iso=new Date().toISOString();
+  const dIn=$('dateInput'),tIn=$('timeInput');
+  if(dIn)dIn.value=iso.slice(0,10);
+  if(tIn)tIn.value=iso.slice(11,19);
+  if(dIn)dIn.addEventListener('input',convertDate);
+  if(tIn)tIn.addEventListener('input',convertDate);
+  const zSel=$('dateZoneSelect');
+  if(zSel)zSel.addEventListener('change',convertDate);
+  const lSel=$('langSelect');
+  if(lSel)lSel.addEventListener('change',e=>location.assign(e.target.value));
+  const syncNavigation=()=>{
+   const active=location.hash==='#about'?'#about':'#converter';
+   document.querySelectorAll('.nav-links a').forEach(link=>{
+    const selected=link.getAttribute('href')===active;
+    link.classList.toggle('active',selected);
+    if(selected)link.setAttribute('aria-current','location');
+    else link.removeAttribute('aria-current');
+   });
+  };
+  window.addEventListener('hashchange',syncNavigation);
+  syncNavigation();
+  document.addEventListener('click',e=>{
+   const btn=e.target.closest('[data-copy]');
+   if(btn){const target=$(btn.dataset.copy);if(target)copy(target.textContent,btn);}
+  });
+  const themeToggle=$('theme-toggle');
+  if(themeToggle){
+   themeToggle.addEventListener('click',()=>{
+    const current=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';
+    const next=current==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    try{localStorage.setItem('othrys-theme',next);}catch(e){}
+   });
+  }
+  sync();
+  convertDate();
+ }catch(err){console.error('UnixTime init error:',err);}
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
 else init();
