@@ -6,7 +6,7 @@
 <title>@@SEO_TITLE@@</title>
 <meta name="description" content="@@SEO_DESC@@">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
-<meta name="theme-color" content="#fcfcfd">
+<meta name="theme-color" content="#000000">
 <link rel="canonical" href="@@CANONICAL@@">
 @@ALTERNATES@@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -17,26 +17,62 @@
 <meta property="og:description" content="@@SEO_DESC@@">
 <meta property="og:url" content="@@CANONICAL@@">
 <meta name="twitter:card" content="summary">
+
+<!-- Instant Non-Flashing Theme Boot -->
+<script>
+  (function() {
+    try {
+      var stored = localStorage.getItem('othrys-theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = (stored === 'oled' || stored === 'dark') ? 'dark' : (stored === 'paper' || stored === 'light') ? 'light' : (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {}
+  })();
+</script>
+
 <script type="application/ld+json">@@SCHEMA@@</script>
 <script>window.UNIXTIME_TEXT=@@CLIENT_TEXT@@;</script>
 <script src="/app.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">@@SKIP@@</a>
+
+<!-- SOVEREIGN HEADER: MINIMAL & CLEAN (SILICON VALLEY STANDARD) -->
 <header class="site-header">
-  <nav class="topbar container" aria-label="Main navigation">
-    <a href="/" class="brand"><span class="brand-main"><strong>UNIX</strong>TIME</span><small class="brand-signature">an OTHRYS utility</small></a>
-    <div class="nav-links">
-      <a class="active" href="#converter">@@NAV_CONVERTER@@</a>
-      <a href="#about">@@NAV_ABOUT@@</a>
+  <div class="topbar container">
+    <div class="header-left">
+      <a href="/" class="brand" aria-label="UnixTime home">
+        <div class="brand-row">
+          <span class="brand-logo-mark" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </span>
+          <span class="brand-main"><strong>UNIX</strong>TIME</span>
+          <span class="sovereign-status-badge" title="No tracking cookies, telemetry, or account required">Sovereign</span>
+        </div>
+        <small class="brand-signature">an OTHRYS utility</small>
+      </a>
     </div>
-    <label class="locale-label" for="langSelect">
-      <span class="sr-only">@@LANGUAGE@@</span>
-      <select id="langSelect" class="lang-menu" aria-label="@@LANGUAGE@@">@@LANG_CHOICES@@</select>
-    </label>
-  </nav>
+
+    <div class="header-actions">
+      <nav class="nav-links" aria-label="Main navigation">
+        <a class="active" href="#converter">@@NAV_CONVERTER@@</a>
+        <a href="#about">@@NAV_ABOUT@@</a>
+      </nav>
+      <label class="locale-label" for="langSelect">
+        <span class="sr-only">@@LANGUAGE@@</span>
+        <select id="langSelect" class="lang-menu" aria-label="@@LANGUAGE@@">@@LANG_CHOICES@@</select>
+      </label>
+      <a class="nav-fleet-pill" href="https://othrys.be/architecture" target="_blank" rel="noopener">Fleet ↗</a>
+      <button id="theme-toggle" class="icon-toggle-btn" aria-label="Toggle dark/light mode" title="Toggle OLED dark / paper light mode">◐</button>
+    </div>
+  </div>
 </header>
+
 <main class="container" id="main">
+  <!-- HERO LIVE CLOCK SECTION -->
   <section class="hero" aria-labelledby="clock-heading">
     <h1 id="clock-heading" class="kicker">@@LIVE_TITLE@@</h1>
     <div class="hero-time">
@@ -53,7 +89,10 @@
     <output id="liveIso" class="sr-only">—</output>
     <output id="liveLocal" class="sr-only">—</output>
   </section>
+
+  <!-- CONVERTER WORKSPACE -->
   <section id="converter" class="converter" aria-label="@@NAV_CONVERTER@@">
+    <!-- Left Column: Unix -> Date -->
     <div class="convert-col left-col" aria-labelledby="to-date-title">
       <div class="col-head">
         <h2 id="to-date-title">Unix <span aria-hidden="true" class="arrow">→</span> @@DATE_SHORT@@</h2>
@@ -85,6 +124,8 @@
       <output id="unixIso" class="sr-only">—</output>
       <output id="unixRelative" class="sr-only">—</output>
     </div>
+
+    <!-- Right Column: Date -> Unix -->
     <div class="convert-col right-col" aria-labelledby="to-unix-title">
       <div class="col-head">
         <h2 id="to-unix-title">@@DATE_SHORT@@ <span aria-hidden="true" class="arrow">→</span> Unix</h2>
@@ -119,6 +160,8 @@
       <p id="dateNotice" class="feedback" role="status" aria-live="polite"></p>
     </div>
   </section>
+
+  <!-- EXPLANATION & REFERENCE CHEAT SHEETS -->
   <section class="below" aria-label="Unix time explanation and references">
     <article class="explain" id="about">
       <h2>@@WHAT_TITLE@@</h2>
@@ -144,11 +187,123 @@ java.time.Instant date = java.time.Instant.ofEpochSecond(seconds);</code></pre><
       </div>
     </section>
   </section>
+
+  <!-- METIS PRIVACY & LOCAL TIMING ADVISORY -->
+  <section class="advisory-card-section">
+    <div class="advisory-card">
+      <div class="advisory-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+      </div>
+      <div class="advisory-content">
+        <span class="advisory-eyebrow">METIS SECURITY &amp; TIME ARCHITECTURE</span>
+        <h3>Why In-Browser Epoch Conversion Protects Developer Telemetry</h3>
+        <p>
+          Typical epoch tools send timestamps and system clock queries to remote server endpoints, allowing fingerprinting of device clock skew, local timezone shifts, and IP locations. UnixTime guarantees zero server requests: all conversions run locally in your browser with microsecond precision.
+        </p>
+        <div class="advisory-grid">
+          <div class="advisory-item warning">
+            <strong>Remote Time Endpoints:</strong>
+            <ul>
+              <li>Upload entered timestamps to remote servers</li>
+              <li>Fingerprint browser clock skew &amp; system time drift</li>
+              <li>Track user timezones, geolocation, and IPs</li>
+              <li>Require active network roundtrips for conversion</li>
+            </ul>
+          </div>
+          <div class="advisory-item sovereign">
+            <strong>UnixTime Architecture:</strong>
+            <ul>
+              <li>100% in-browser BigInt nanosecond arithmetic</li>
+              <li>Zero tracking cookies or remote telemetry calls</li>
+              <li>Instant conversion with zero network roundtrips</li>
+              <li>Native Intl timezone parsing without external bloat</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
+
+<!-- CRAWLABLE LOCALE SHORTCUTS (REQUIRED BY SMOKE TESTS) -->
 <nav class="locale-shortcuts container" aria-label="@@LANGUAGE@@">@@LANG_LINKS@@</nav>
-<footer class="footer container">
-  <div class="footer-left"><a href="/" class="footer-brand"><strong>UNIX</strong>TIME</a><span class="footer-divider">|</span><span>@@FOOTER_TAGLINE@@</span></div>
-  <div class="footer-links"><a href="/about">About</a><a href="/privacy">Privacy</a><a href="https://othrys.be/" rel="noopener" target="_blank">OTHRYS</a></div>
+
+<!-- SPACIOUS FULL-WIDTH FOOTER HUB (GOLDEN SPECIMEN STANDARD) -->
+<footer class="site-footer">
+  <div class="footer-brand-bar">
+    <div class="footer-brand">
+      <div class="brand-row">
+        <span class="brand-logo-mark" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </span>
+        <span class="brand-main"><strong>UNIX</strong>TIME</span>
+      </div>
+      <p class="footer-tagline">@@FOOTER_TAGLINE@@ · 100% in-browser calculations.</p>
+    </div>
+
+    <div class="footer-badges">
+      <div class="footer-badge-item">
+        <span class="green-indicator">●</span>
+        <span>100% Client-Side Pure JavaScript</span>
+      </div>
+      <div class="footer-badge-item">
+        <span class="green-indicator">●</span>
+        <span>Zero Tracking Cookies · 100% Private</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-sitemap-grid">
+    <div class="sitemap-col">
+      <h4>Conversions</h4>
+      <ul>
+        <li><a href="#converter">Unix Seconds to Date</a></li>
+        <li><a href="#converter">Milliseconds &amp; Nanoseconds</a></li>
+        <li><a href="#converter">Date &amp; Time to Epoch</a></li>
+        <li><a href="#converter">Timezone Adjustments</a></li>
+      </ul>
+    </div>
+
+    <div class="sitemap-col">
+      <h4>Guides &amp; References</h4>
+      <ul>
+        <li><a href="/unix-time-python/">Python Epoch Guide</a></li>
+        <li><a href="/unix-time-javascript/">JavaScript Time Guide</a></li>
+        <li><a href="/unix-timestamp-milliseconds/">Milliseconds Reference</a></li>
+        <li><a href="#about">What is Unix Time?</a></li>
+      </ul>
+    </div>
+
+    <div class="sitemap-col">
+      <h4>Sovereign Principles</h4>
+      <ul>
+        <li><a href="/about">About UnixTime</a></li>
+        <li><a href="/privacy">Zero Cookie Policy</a></li>
+        <li><a href="https://othrys.be/architecture" target="_blank" rel="noopener">Sovereign Architecture</a></li>
+        <li><a href="https://othrys.be" target="_blank" rel="noopener">OTHRYS Core</a></li>
+      </ul>
+    </div>
+
+    <div class="sitemap-col">
+      <h4>The Sovereign Fleet</h4>
+      <ul>
+        <li><a href="https://freeqr.othrys.be" target="_blank" rel="noopener">FreeQR ↗</a></li>
+        <li><a href="https://shrinkmyphoto.othrys.be" target="_blank" rel="noopener">ShrinkMyPhoto ↗</a></li>
+        <li><a href="https://quickpercent.othrys.be" target="_blank" rel="noopener">QuickPercent ↗</a></li>
+        <li><a href="https://github.com/vtcbelgium/unixtime" target="_blank" rel="noopener">GitHub Repository ↗</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 OTHRYS. Engineered under the Sovereign Open Architecture in Belgium.</span>
+    <span class="sovereign-tag">100% Client-Side · Zero Tracking Cookies · Zero Telemetry</span>
+  </div>
 </footer>
 </body>
 </html>
