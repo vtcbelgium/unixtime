@@ -39,6 +39,38 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"UnixTime","url":"https://unixtime.othrys.be/","description":"Check the current Unix time. Instantly convert Unix timestamps to dates and dates to epoch seconds, milliseconds, microseconds or nanoseconds. UTC and time zones.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"en","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}</script>
 <script>window.UNIXTIME_TEXT={"invalid":"Enter a valid numeric timestamp.","precision":"Too many decimal places for this timestamp unit.","outOfRange":"The timestamp is outside the supported date range.","invalidDate":"Enter a valid date and time.","enterUnix":"Enter a Unix timestamp to convert.","copied":"Copied!","detected":"Interpreted as","autoNotice":"Select the unit manually for ambiguous or historical values.","datePrecision":"Date fields support seconds; finer values are zero-padded.","seconds":"Seconds","milliseconds":"Milliseconds","microseconds":"Microseconds","nanoseconds":"Nanoseconds"};</script>
 <script src="/app.js?v=2" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Are my files or text uploaded to a remote server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. All computation occurs 100% client-side in your browser JavaScript thread. No payload data is ever transmitted across the network."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Unix Time use advertising or behavioral trackers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Never. OTHRYS tools have zero tracking pixels, zero analytics scripts, and set zero third-party cookies."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use Unix Time offline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Once loaded in your browser, Unix Time executes locally without network calls."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to converter</a>
