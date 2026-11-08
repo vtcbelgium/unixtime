@@ -38,6 +38,6 @@ for code in d:
 tree=ET.parse(ROOT/'sitemap.xml')
 root=tree.getroot()
 ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
-assert len(root.findall('s:url',ns))==len(d)+5
+assert len(root.findall('s:url',ns))==len(d)+6
 assert 'Sitemap: https://unixtime.othrys.be/sitemap.xml' in (ROOT/'robots.txt').read_text()
 print('PASS sitemap.xml, robots.txt, all locales')
