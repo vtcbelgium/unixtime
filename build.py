@@ -81,7 +81,8 @@ hub='''<!doctype html>
 <meta name="robots" content="index,follow,max-snippet:-1">
 <link rel="canonical" href="'''+GUIDES_URL+'''">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v=3">
+<script src="/fleet-spotlight.js" defer></script>
 <meta property="og:type" content="website">
 <meta property="og:title" content="'''+HUB_TITLE+'''">
 <meta property="og:description" content="'''+HUB_DESC+'''">
@@ -128,7 +129,7 @@ import shutil
 output=ROOT/'dist'
 if output.exists(): shutil.rmtree(output)
 output.mkdir()
-for filename in ('index.html','styles.css','app.js','favicon.svg','robots.txt','sitemap.xml','about.html','privacy.html','404.html','_headers'):
+for filename in ('index.html','styles.css','app.js','favicon.svg','fleet-spotlight.js','robots.txt','sitemap.xml','about.html','privacy.html','404.html','_headers'):
     shutil.copy2(ROOT/filename,output/filename)
 for lang in languages:
     if lang=='en':continue
