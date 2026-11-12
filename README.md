@@ -5,11 +5,11 @@
 [![Cookies](https://img.shields.io/badge/Cookies-0-blue?style=flat-square)](https://unixtime.othrys.be)
 [![WCAG AA](https://img.shields.io/badge/Accessibility-WCAG_AA-blueviolet?style=flat-square)](https://unixtime.othrys.be)
 
-> Fast, private, client-side epoch timestamp converter and live UTC clock. Runs 100% in your browser with zero server uploads, zero cookies, and zero tracking.
+> Fast, private, client-side epoch timestamp converter and live UTC clock. Runs 100% in your browser with zero server uploads, zero cookies, and no third-party trackers (anonymous cookieless page counts only).
 
 ## Features
 - **100% Client-Side:** Files and confidential data never leave your device.
-- **Zero Cookies & Zero Trackers:** Closed-valve privacy architecture with 0 third-party telemetry scripts.
+- **Zero Cookies & Zero Trackers:** Closed-valve privacy architecture: 0 third-party scripts; first-party anonymous page counts via stats.othrys.be.
 - **Keyboard Spotlight:** Jump to any of the 20 sovereign tools anytime by pressing <kbd>⌘K</kbd> or <kbd>Ctrl+K</kbd>.
 - **PWA Ready:** Works offline on laptops, MacBooks, tablets, and mobile devices.
 
@@ -26,7 +26,7 @@ Independent, accessible, privacy-conscious Unix timestamp converter for `https:/
 - One fast, clean converter page with current Unix time, Unix to date and date to Unix
 - Seconds, milliseconds, microseconds and nanoseconds with BigInt precision; UTC and named time zones for display
 - Hand-translated, **fully crawlable** pages with dedicated URLs, reciprocal hreflang, canonicals, sitemaps and WebApplication structured data
-- No dependencies, login, database, API requests, third-party fonts, analytics or ad scripts
+- No dependencies, login, database, API requests, third-party fonts, third-party analytics or ad scripts (anonymous first-party page counts only)
 - No combinatorial spam URLs; each published page has real translation and independently useful content
 
 ## Build
