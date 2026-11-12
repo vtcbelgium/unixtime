@@ -129,7 +129,7 @@ import shutil
 output=ROOT/'dist'
 if output.exists(): shutil.rmtree(output)
 output.mkdir()
-for filename in ('index.html','styles.css','app.js','favicon.svg','fleet-spotlight.js','robots.txt','sitemap.xml','about.html','privacy.html','404.html','_headers'):
+for filename in ('index.html','styles.css','app.js','favicon.svg','fleet-spotlight.js','robots.txt','sitemap.xml','about.html','privacy.html','404.html','_headers','stats.js'):
     shutil.copy2(ROOT/filename,output/filename)
 for lang in languages:
     if lang=='en':continue
