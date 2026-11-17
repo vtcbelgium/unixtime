@@ -1,0 +1,44 @@
+name: Verify static opt-in site assets (Themis)
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verify both UnixTime delivery layouts
+        run: |
+          node --check stats.js
+          node --check public/stats.js
+          test -s stats-consent.css
+          test -s public/stats-consent.css
+          grep -F 'consent: "accepted"' stats.js
+          grep -F 'consent: "accepted"' public/stats.js
+          grep -F 'src="/stats.js"' index.html
+          if grep -q 'location.hash' stats.js public/stats.js; then
+            echo "::error::URL fragments must not reach statistics"
+            exit 1
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: verified-unixtime-static-source
+          path: |
+            index.html
+            stats.js
+            stats-consent.css
+            public/
+            nl/
+            fr/
+            de/
+            es/
+            pt/
+          retention-days: 7
