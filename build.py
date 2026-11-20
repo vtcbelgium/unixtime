@@ -9,12 +9,19 @@ from xml.sax.saxutils import escape as xml_escape
 
 ROOT=Path(__file__).resolve().parent
 BASE='https://unixtime.othrys.be'
+FAQ={'@context':'https://schema.org','@type':'FAQPage','mainEntity':[
+    {'@type':'Question','name':'How do I convert a Unix epoch timestamp to a human-readable date?',
+     'acceptedAnswer':{'@type':'Answer','text':'Paste the epoch value into the converter and choose seconds, milliseconds, microseconds or nanoseconds. UnixTime shows the date in UTC and in your selected time zone; every calculation runs in your browser.'}},
+    {'@type':'Question','name':'Does UnixTime run entirely in my browser?',
+     'acceptedAnswer':{'@type':'Answer','text':'Yes. Every Unix timestamp conversion is performed locally with client-side JavaScript, so timestamp inputs never leave your device and are not uploaded to a server.'}},
+    {'@type':'Question','name':'Does UnixTime use tracking cookies or upload my data?',
+     'acceptedAnswer':{'@type':'Answer','text':'UnixTime sets no tracking cookies and does not upload timestamp inputs to any cloud service. Only anonymous, cookieless page counts are recorded.'}}]}
 languages={'en':'English','nl':'Nederlands','fr':'Français','de':'Deutsch','es':'Español','pt':'Português'}
 locales=json.loads((ROOT/'translations.json').read_text(encoding='utf-8-sig'))
 template=(ROOT/'template.html').read_text(encoding='utf-8')
 assert set(locales)==set(languages)
 keys=set(re.findall(r'@@([A-Z][A-Z_]+)@@',template))
-generated={'ALTERNATES','LANG','DIRECTION','CANONICAL','LANG_CHOICES','LANG_LINKS','SCHEMA','CLIENT_TEXT'}
+generated={'ALTERNATES','LANG','DIRECTION','CANONICAL','LANG_CHOICES','LANG_LINKS','SCHEMA','FAQ_SCHEMA','CLIENT_TEXT'}
 fields=keys-generated
 for lang,data in locales.items():
     assert fields<=set(data), (lang,fields-set(data))
@@ -36,6 +43,7 @@ for code,data in locales.items():
     page=template
     special={'ALTERNATES':alternates,'LANG':code,'DIRECTION':'ltr','CANONICAL':canonical(code),
         'LANG_CHOICES':choices,'LANG_LINKS':links,'SCHEMA':json.dumps(schema,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c'),
+        'FAQ_SCHEMA':json.dumps(FAQ,ensure_ascii=False,separators=(',',':')).replace('<','\u003c'),
         'CLIENT_TEXT':json.dumps(script_data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c')}
     for key,val in {**data,**special}.items():
         page=page.replace('@@'+key+'@@',escape(val,quote=True) if key not in special else val)
@@ -131,6 +139,7 @@ if output.exists(): shutil.rmtree(output)
 output.mkdir()
 for filename in ('index.html','styles.css','app.js','favicon.svg','fleet-spotlight.js','robots.txt','sitemap.xml','about.html','privacy.html','404.html','_headers','stats.js','stats-consent.css'):
     shutil.copy2(ROOT/filename,output/filename)
+shutil.copy2(ROOT/'public'/'og-image.svg',output/'og-image.svg')
 for lang in languages:
     if lang=='en':continue
     target=output/lang
